@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <!-- 主题颜色 -->
+    <color name="ui_head">#222222</color>
+    <!-- 纯色 -->
+    <color name="white">#ffffffff</color>
+    <!-- 主题页面颜色 -->
+    <color name="ui_content">#f6f6f7</color>
+    <!-- 分割线颜色 -->
+    <color name="ui_split">#c2c2c2</color>
+    <color name="action_bar_color">#ed4255</color>
+</resources>
