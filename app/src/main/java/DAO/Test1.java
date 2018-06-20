@@ -66,10 +66,10 @@ public class Test1 {
     public static void main(String[] args) throws IOException, JSONException {
         // 请求示例 url 默认请求参数已经做URL编码
         String url = "http://api01.bitspaceman.com:8000/book/baiduread";
-        url+="?apikey=eVQVoieFyQYmFgy2EErjfz3Hj5zs7cV5huRh9IF32cmNgMcy68xEsymLeGeIj41y";
+        url += "?apikey=eVQVoieFyQYmFgy2EErjfz3Hj5zs7cV5huRh9IF32cmNgMcy68xEsymLeGeIj41y";
         //url+="&kw=水浒传";//书名模糊查询
-        url+="&pageToken=1";//第几页
-        url+="&catid=7_11014";//查询书籍或者查询分类
+        url += "&pageToken=1";//第几页
+        url += "&catid=7_11014";//查询书籍或者查询分类
         JSONObject json = getRequestFromUrl(url);
         //System.out.println(url);
         //System.out.println(json.toString());
@@ -78,13 +78,13 @@ public class Test1 {
         //System.out.println(json.getString("data"));
         //将jsonArray字符串转化为JSONArray
         JSONArray jsonArray = JSONArray.fromObject(json.getString("data"));
-        for(int i=0;i<10;i++) {
+        for (int i = 0; i < 10; i++) {
             JSONObject jUser = jsonArray.getJSONObject(i);
-	            /*System.out.println(jUser.getString("url"));
+                /*System.out.println(jUser.getString("url"));
 	            System.out.println(jUser.getString("abstract"));
 	            System.out.println(jUser.getString("writers"));
 	            System.out.println(jUser.getString("price"));*/
-	            System.out.println(jUser.getString("coverUrl"));
+            System.out.println(jUser.getString("coverUrl"));
                 /*System.out.println(jUser.getString("tags"));*/
         }
 

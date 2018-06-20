@@ -20,7 +20,7 @@ public class ImageListAdapter extends ArrayAdapter {
     private String[] imageUrls;
 
     public ImageListAdapter(Context context, String[] imageUrls) {
-        super(context, R.layout.item,imageUrls);
+        super(context, R.layout.item, imageUrls);
 
         this.context = context;
         this.imageUrls = imageUrls;
@@ -37,6 +37,7 @@ public class ImageListAdapter extends ArrayAdapter {
         Glide
                 .with(context)
                 .load(imageUrls[position])
+                /*.override(100, 100)*/
                 .into((ImageView) convertView);
 
         return convertView;
