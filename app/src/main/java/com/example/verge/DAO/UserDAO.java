@@ -1,15 +1,15 @@
-package DAO;
+package com.example.verge.DAO;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import model.User;
+import com.example.verge.model.User;
 
 public class UserDAO {
-	private DatabaseHelper dbHelper;
+	private UserDBHelper dbHelper;
 
 	public UserDAO(Context context) {
-		dbHelper = new DatabaseHelper(context);
+		dbHelper = new UserDBHelper(context);
 	}
 
 	// 登录用

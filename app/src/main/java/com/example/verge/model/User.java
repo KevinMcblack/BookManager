@@ -1,4 +1,4 @@
-package model;
+package com.example.verge.model;
 
 import java.io.Serializable;
 

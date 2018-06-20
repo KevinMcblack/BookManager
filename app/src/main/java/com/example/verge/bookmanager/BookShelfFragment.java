@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class BookShelfFragment extends Fragment {
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View bookShelfLayout = inflater.inflate(R.layout.layout_book_shelf_frame,container,false);
+        return  bookShelfLayout;
     }
 }

@@ -1,14 +1,14 @@
-package DAO;
+package com.example.verge.DAO;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class UserDBHelper extends SQLiteOpenHelper {
 	static String name = "Preferences.db";
 	static int version = 1;
-
-	public DatabaseHelper(Context context) {
+	public static String TABLE_NAME = "user";
+	public UserDBHelper(Context context) {
 		super(context, name, null, version);
 	}
 

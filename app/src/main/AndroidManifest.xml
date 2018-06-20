@@ -19,6 +19,7 @@
         <activity android:name=".MainActivity"/>
         <activity android:name=".TitleActivity" />
         <activity android:name=".Register"/>
+        <activity android:name="com.example.verge.DAO.BookDAO" />
     </application>
 
 </manifest>
