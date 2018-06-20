@@ -2,8 +2,10 @@ package com.example.verge.bookmanager;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -24,6 +26,9 @@ public class MainActivity extends TitleActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
         setTitle("书城");
         showBackwardView(true);
         showForwardView(R.string.text_forward,true);
@@ -54,6 +59,8 @@ public class MainActivity extends TitleActivity {
                 setTabSelection(0);
                 break;
             case R.id.storeLayout:
+                Intent intent = new Intent(MainActivity.this, BookStore.class);
+                startActivity(intent);
                 setTabSelection(1);
                 break;
             case R.id.myLayout:
@@ -82,7 +89,7 @@ public class MainActivity extends TitleActivity {
                 }
                 break;
             case 1:
-                storeIcon.setImageResource(R.drawable.store1);
+                /*storeIcon.setImageResource(R.drawable.store1);
                 bookShelfIcon.setImageResource(R.drawable.bookshelf);
                 myIcon.setImageResource(R.drawable.my);
                 Log.i("单击书城","更改图片");
@@ -91,7 +98,7 @@ public class MainActivity extends TitleActivity {
                     transaction.add(R.id.content,storeFragment);
                 }else{
                     transaction.show(storeFragment);
-                }
+                }*/
                 break;
             case 2:
                 myIcon.setImageResource(R.drawable.my1);
