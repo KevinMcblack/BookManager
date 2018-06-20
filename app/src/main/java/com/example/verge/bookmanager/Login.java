@@ -1,6 +1,5 @@
 package com.example.verge.bookmanager;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import DAO.UserDAO;
+import com.example.verge.DAO.UserDAO;
 
 public class Login extends AppCompatActivity {
 

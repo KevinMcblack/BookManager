@@ -10,8 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import DAO.UserDAO;
-import model.User;
+import com.example.verge.DAO.UserDAO;
+import com.example.verge.model.User;
 
 public class Register extends Activity {
 
