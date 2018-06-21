@@ -4,13 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.GridLayout
-        android:id="@+id/bookShelf"
+    <ImageView
+        android:id="@+id/bookImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:contentDescription="@string/app_name" />
+    <TextView
+        android:id="@+id/bookid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:rowCount="5"
-        app:columnCount="4"
-        app:orientation="horizontal">
-
-    </android.support.v7.widget.GridLayout>
+        android:visibility="invisible"/>
 </LinearLayout>

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
+
 /**
  * Created by KevinWang on 2018/6/20.
  */
