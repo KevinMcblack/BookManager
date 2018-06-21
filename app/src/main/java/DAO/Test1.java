@@ -67,7 +67,7 @@ public class Test1 {
         // 请求示例 url 默认请求参数已经做URL编码
         String url = "http://api01.bitspaceman.com:8000/book/baiduread";
         url += "?apikey=eVQVoieFyQYmFgy2EErjfz3Hj5zs7cV5huRh9IF32cmNgMcy68xEsymLeGeIj41y";
-        url+="&kw=水浒传";//书名模糊查询
+        url+="&kw=三国演义";//书名模糊查询
         url += "&pageToken=1";//第几页
         /*url += "&catid=7_11014";//查询书籍或者查询分类*/
         JSONObject json = getRequestFromUrl(url);
@@ -85,6 +85,7 @@ public class Test1 {
 	            System.out.println(jUser.getString("writers"));
 	            System.out.println(jUser.getString("price"));*/
             System.out.println(jUser.getString("coverUrl"));
+            System.out.println(jUser.getString("title"));
                 /*System.out.println(jUser.getString("tags"));*/
         }
 

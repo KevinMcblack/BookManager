@@ -17,9 +17,7 @@ import com.bumptech.glide.Glide;
 public class ImageListAdapter extends ArrayAdapter {
     private Context context;
     private LayoutInflater inflater;
-
     private String[] imageUrls;
-
     public ImageListAdapter(Context context, String[] imageUrls) {
         super(context, R.layout.item, imageUrls);
 

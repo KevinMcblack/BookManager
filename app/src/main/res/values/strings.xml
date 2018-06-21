@@ -34,5 +34,5 @@
     <string name="hint_deletebooks">请输入要删除的书名</string>
     <string name="top_head">开发者个人信息</string>
     <string name="text_back">返回</string>
-    <string name="text_forward">提交</string>
+    <string name="text_forward">在线搜索</string>
 </resources>

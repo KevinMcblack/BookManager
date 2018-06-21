@@ -35,7 +35,7 @@ public class MainActivity extends TitleActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         setTitle("图书管理系统");
-        /*showBackwardView(true);*/
+       /* showBackwardView(true);*/
         RelativeLayout biaoti = findViewById(R.id.biaoti);
         biaoti.setOnClickListener(new View.OnClickListener() {
             @Override
