@@ -6,11 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <include layout="@layout/layout_title" />
+    <!--<include layout="@layout/layout_title"
+        android:id="@+id/title"/>-->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
 
         <FrameLayout
             android:id="@+id/content"
@@ -18,14 +21,14 @@
             android:layout_height="0dp"
             android:layout_weight="1">
 
+
         </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="10sp"
-            >
+            android:paddingBottom="10sp">
             <!--消息-->
             <LinearLayout
                 android:id="@+id/bookShelfLayout"
@@ -33,18 +36,20 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_gravity="center"
+                    android:orientation="vertical"
                     tools:ignore="UselessParent">
+
                     <ImageView
                         android:id="@+id/bookShelfIcon"
                         android:layout_width="40sp"
                         android:layout_height="40sp"
-                        android:src="@drawable/bookshelf"
-                        android:contentDescription="@null"/>
+                        android:contentDescription="@null"
+                        android:src="@drawable/bookshelf" />
 
                     <TextView
                         android:id="@+id/bookShelfText"
@@ -59,20 +64,21 @@
                 android:id="@+id/storeLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_weight="1"
-                >
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center">
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
                     <ImageView
                         android:id="@+id/storeIcon"
                         android:layout_width="40sp"
                         android:layout_height="40sp"
-                        android:src="@drawable/store"
-                        android:contentDescription="@null"/>
+                        android:contentDescription="@null"
+                        android:src="@drawable/store" />
 
                     <TextView
                         android:id="@+id/storeText"
@@ -87,26 +93,26 @@
                 android:id="@+id/myLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center">
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
                     <ImageView
                         android:id="@+id/myIcon"
                         android:layout_width="40sp"
                         android:layout_height="40sp"
-                        android:src="@drawable/my"
-                        />
+                        android:src="@drawable/my" />
 
                     <TextView
                         android:id="@+id/myText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="我   的"
-                        />
+                        android:text="我   的" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

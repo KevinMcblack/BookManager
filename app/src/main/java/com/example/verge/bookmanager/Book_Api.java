@@ -1,5 +1,8 @@
-package DAO;
+package com.example.verge.bookmanager;
 
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONException;
@@ -15,11 +18,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
 
-/**
- * Created by KevinWang on 2018/6/19.
- */
-
-public class Test1 {
+public class Book_Api extends AppCompatActivity {
     private static String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
         int cp;
@@ -62,15 +61,25 @@ public class Test1 {
             instream.close();
         }
     }
-
-    public static void main(String[] args) throws IOException, JSONException {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_book__api);
+        Intent intent=getIntent();
+        String data=intent.getStringExtra("data");
         // 请求示例 url 默认请求参数已经做URL编码
         String url = "http://api01.bitspaceman.com:8000/book/baiduread";
         url += "?apikey=eVQVoieFyQYmFgy2EErjfz3Hj5zs7cV5huRh9IF32cmNgMcy68xEsymLeGeIj41y";
-        url+="&kw=水浒传";//书名模糊查询
-        url += "&pageToken=1";//第几页
+        url+="&kw="+data;//书名模糊查询
+        /*url += "&pageToken=1";//第几页*/
         /*url += "&catid=7_11014";//查询书籍或者查询分类*/
-        JSONObject json = getRequestFromUrl(url);
+        JSONObject json = null;
+        try {
+            json = getRequestFromUrl(url);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String[] photo = new String[100];
         //System.out.println(url);
         //System.out.println(json.toString());
         //System.out.print(json.getString("appCode"));
@@ -84,9 +93,17 @@ public class Test1 {
 	            System.out.println(jUser.getString("abstract"));
 	            System.out.println(jUser.getString("writers"));
 	            System.out.println(jUser.getString("price"));*/
-            System.out.println(jUser.getString("coverUrl"));
+                System.out.println(jUser.getString("coverUrl"));
+                photo[i]=jUser.getString("coverUrl");
                 /*System.out.println(jUser.getString("tags"));*/
         }
+        //打开另一个Activity,一个Intent对象代表一个意图
+        intent = new Intent();
+        Bundle b=new Bundle();
+        b.putStringArray("pose_title", photo);
+        intent.putExtras(b);
 
+        intent.setClass(Book_Api.this, Search_result.class);
+        Book_Api.this.startActivity(intent);
     }
 }
