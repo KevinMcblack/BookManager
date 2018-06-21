@@ -1,5 +1,6 @@
 package com.example.verge.bookmanager;
 
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +39,9 @@ public class ImageListAdapter extends ArrayAdapter {
         Glide
                 .with(context)
                 .load(imageUrls[position])
-                /*.override(100, 100)*/
+/*
+                .override(120,200) //图片显示的分辨率 ，像素值 可以转化为DP再设置
+*/
                 .into((ImageView) convertView);
 
         return convertView;

@@ -3,12 +3,14 @@ package com.example.verge.bookmanager;
 
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.design.widget.TabLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
-
+import android.widget.Toast;
+//精选
 public class StoreFragment extends Fragment {
     public static String[] eatFoodyImages = {
             "http://hiphotos.baidu.com/doc/pic/item/fcfaaf51f3deb48f11fa7986f81f3a292cf578d3.jpg",
@@ -22,12 +24,14 @@ public class StoreFragment extends Fragment {
             "http://hiphotos.baidu.com/doc/pic/item/6609c93d70cf3bc746fc27e8d900baa1cd112a32.jpg",
             "http://hiphotos.baidu.com/doc/pic/item/4a36acaf2edda3cc5729ce070be93901203f92c3.jpg",
     };
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View storeLayout = inflater.inflate(R.layout.activity_book_store,container,false);
-        GridView gridView=  storeLayout.findViewById(R.id.grid_view);
+        View storeLayout = inflater.inflate(R.layout.activity_book_store, container, false);
+
+        GridView gridView = storeLayout.findViewById(R.id.grid_view);
         gridView.setAdapter(new ImageListAdapter(getContext(), eatFoodyImages));
-        /*Log.i("test","111");*/
-        return  storeLayout;
+
+        return storeLayout;
     }
 }

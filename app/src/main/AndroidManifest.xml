@@ -23,6 +23,9 @@
         <activity android:name=".TitleActivity" />
         <activity android:name=".Register" />
         <activity android:name=".BookStore" />
+        <activity android:name=".Search" />
+        <activity android:name=".Book_Api" />
+        <activity android:name=".Search_result"></activity>
     </application>
 
 </manifest>

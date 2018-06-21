@@ -1,20 +1,29 @@
 package com.example.verge.bookmanager;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class TitleActivity extends AppCompatActivity implements View.OnClickListener{
-
-    //private RelativeLayout mLayoutTitleBar;
+/**
+ * 1）定义标题栏布局；
+ * 2）自定义TitleActivity控制标题栏按钮监听；
+ * 3）在TitleActivity中实现标题栏以下内容区域的切换；
+ */
+public class TitleActivity extends Activity implements View.OnClickListener {
+    private static final String TAG = "TitleActivity";
+    private RelativeLayout mLayoutTitleBar;
     private TextView mTitleTextView;
+    private Button mBackwardbButton;
     private Button mForwardButton;
-    private ImageView mBack;
-    //private FrameLayout mContentLayout;
+    private FrameLayout mContentLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,27 +33,32 @@ public class TitleActivity extends AppCompatActivity implements View.OnClickList
 
     private void setupViews() {
         super.setContentView(R.layout.activity_title);
-        android.support.v7.app.ActionBar actionBar=getSupportActionBar();
-        if(actionBar!=null)
-        {
-            actionBar.hide();
-        }
         mTitleTextView = findViewById(R.id.text_title);
-        mBack=findViewById(R.id.backward);
+        mContentLayout = findViewById(R.id.layout_content);
+        /*mBackwardbButton = (Button) findViewById(R.id.button_backward);*/
         mForwardButton = findViewById(R.id.button_forward);
+        mForwardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TitleActivity.this, Search.class);
+                startActivity(intent);
+            }
+        });
     }
 
     /**
      * 是否显示返回按钮
      *
+     * @param backwardResid 文字
      * @param show          true则显示
      */
-    protected void showBackwardView(boolean show) {
-        if (mBack != null) {
+    protected void showBackwardView(int backwardResid, boolean show) {
+        if (mBackwardbButton != null) {
             if (show) {
-                mBack.setVisibility(View.VISIBLE);
+                mBackwardbButton.setText(backwardResid);
+                mBackwardbButton.setVisibility(View.VISIBLE);
             } else {
-                mBack.setVisibility(View.INVISIBLE);
+                mBackwardbButton.setVisibility(View.INVISIBLE);
             }
         } // else ignored
     }
@@ -63,16 +77,17 @@ public class TitleActivity extends AppCompatActivity implements View.OnClickList
             } else {
                 mForwardButton.setVisibility(View.INVISIBLE);
             }
-        } // else ignored
+        }
     }
 
     /**
      * 返回按钮点击后触发
+     *
      * @param backwardView
      */
     protected void onBackward(View backwardView) {
         Toast.makeText(this, "点击返回，可在此处调用finish()", Toast.LENGTH_SHORT).show();
-        //finish();
+        finish();
     }
 
     /**
@@ -103,29 +118,29 @@ public class TitleActivity extends AppCompatActivity implements View.OnClickList
     }
 
     //取出FrameLayout并调用父类removeAllViews()方法
-//    @Override
-//    public void setContentView(int layoutResID) {
-//        mContentLayout.removeAllViews();
-//        View.inflate(this, layoutResID, mContentLayout);
-//        onContentChanged();
-//    }
+    @Override
+    public void setContentView(int layoutResID) {
+        mContentLayout.removeAllViews();
+        View.inflate(this, layoutResID, mContentLayout);
+        onContentChanged();
+    }
 
-//    @Override
-//    public void setContentView(View view) {
-//        mContentLayout.removeAllViews();
-//        mContentLayout.addView(view);
-//        onContentChanged();
-//    }
+    @Override
+    public void setContentView(View view) {
+        mContentLayout.removeAllViews();
+        mContentLayout.addView(view);
+        onContentChanged();
+    }
 
     /* (non-Javadoc)
      * @see android.app.Activity#setContentView(android.view.View, android.view.ViewGroup.LayoutParams)
      */
-//    @Override
-//    public void setContentView(View view, ViewGroup.LayoutParams params) {
-//        mContentLayout.removeAllViews();
-//        mContentLayout.addView(view, params);
-//        onContentChanged();
-//    }
+    @Override
+    public void setContentView(View view, ViewGroup.LayoutParams params) {
+        mContentLayout.removeAllViews();
+        mContentLayout.addView(view, params);
+        onContentChanged();
+    }
 
     /* (non-Javadoc)
      * @see android.view.View.OnClickListener#onClick(android.view.View)
@@ -135,10 +150,10 @@ public class TitleActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
 
         switch (v.getId()) {
-            case R.id.backward:
+           /* case R.id.button_backward:
                 onBackward(v);
                 break;
-
+*/
             case R.id.button_forward:
                 onForward(v);
                 break;
