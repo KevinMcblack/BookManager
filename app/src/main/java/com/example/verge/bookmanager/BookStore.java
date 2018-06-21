@@ -32,6 +32,7 @@ public class BookStore extends AppCompatActivity {
             "快递查询",
             "更多"
     };
+
     public static String[] eatFoodyImages = {
             "http://i.imgur.com/rFLNqWI.jpg",
             "http://i.imgur.com/C9pBVt7.jpg",

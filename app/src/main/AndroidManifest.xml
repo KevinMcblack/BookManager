@@ -25,7 +25,8 @@
         <activity android:name=".BookStore" />
         <activity android:name=".Search" />
         <activity android:name=".Book_Api" />
-        <activity android:name=".Search_result"></activity>
+        <activity android:name=".Search_result" />
+        <activity android:name=".Book_details"></activity>
     </application>
 
 </manifest>

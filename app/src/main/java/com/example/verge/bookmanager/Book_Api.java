@@ -61,16 +61,17 @@ public class Book_Api extends AppCompatActivity {
             instream.close();
         }
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book__api);
-        Intent intent=getIntent();
-        String data=intent.getStringExtra("data");
+        Intent intent = getIntent();
+        String data = intent.getStringExtra("data");
         // 请求示例 url 默认请求参数已经做URL编码
         String url = "http://api01.bitspaceman.com:8000/book/baiduread";
         url += "?apikey=eVQVoieFyQYmFgy2EErjfz3Hj5zs7cV5huRh9IF32cmNgMcy68xEsymLeGeIj41y";
-        url+="&kw="+data;//书名模糊查询
+        url += "&kw=" + data;//书名模糊查询
         /*url += "&pageToken=1";//第几页*/
         /*url += "&catid=7_11014";//查询书籍或者查询分类*/
         JSONObject json = null;
@@ -80,6 +81,13 @@ public class Book_Api extends AppCompatActivity {
             e.printStackTrace();
         }
         String[] photo = new String[100];
+        String[] details = new String[100];
+        String[] writers = new String[100];
+        String[] publishOrg=new String[100];
+        String[] book_url=new String[100];
+        String[] title=new String[100];
+        String[] price=new String[100];
+        String[] tags=new String[100];
         //System.out.println(url);
         //System.out.println(json.toString());
         //System.out.print(json.getString("appCode"));
@@ -89,18 +97,32 @@ public class Book_Api extends AppCompatActivity {
         JSONArray jsonArray = JSONArray.fromObject(json.getString("data"));
         for (int i = 0; i < 10; i++) {
             JSONObject jUser = jsonArray.getJSONObject(i);
-                /*System.out.println(jUser.getString("url"));
-	            System.out.println(jUser.getString("abstract"));
-	            System.out.println(jUser.getString("writers"));
-	            System.out.println(jUser.getString("price"));*/
-                System.out.println(jUser.getString("coverUrl"));
-                photo[i]=jUser.getString("coverUrl");
-                /*System.out.println(jUser.getString("tags"));*/
+            //System.out.println(jUser.getString("url"));
+            System.out.println(jUser.getString("abstract"));
+            System.out.println(jUser.getString("writers"));
+            //System.out.println(jUser.getString("price"));
+            System.out.println(jUser.getString("coverUrl"));
+            photo[i] = jUser.getString("coverUrl");
+            details[i] = jUser.getString("abstract");
+            writers[i] = jUser.getString("writers");
+            /*publishOrg[i]=jUser.getString("publishOrg");*/
+            book_url[i]=jUser.getString("url");
+            title[i]=jUser.getString("title");
+            price[i]=jUser.getString("price");
+            tags[i]=jUser.getString("tags");
+            System.out.println(jUser.getString("tags"));
+
         }
         //打开另一个Activity,一个Intent对象代表一个意图
         intent = new Intent();
-        Bundle b=new Bundle();
-        b.putStringArray("pose_title", photo);
+        Bundle b = new Bundle();
+        b.putStringArray("photo", photo);
+        b.putStringArray("details", details);
+        b.putStringArray("writers", writers);
+        b.putStringArray("book_url", book_url);
+        b.putStringArray("title", title);
+        b.putStringArray("price", price);
+        b.putStringArray("tags", tags);
         intent.putExtras(b);
 
         intent.setClass(Book_Api.this, Search_result.class);

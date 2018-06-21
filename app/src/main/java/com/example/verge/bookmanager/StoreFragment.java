@@ -13,16 +13,16 @@ import android.widget.Toast;
 //精选
 public class StoreFragment extends Fragment {
     public static String[] eatFoodyImages = {
-            "http://hiphotos.baidu.com/doc/pic/item/fcfaaf51f3deb48f11fa7986f81f3a292cf578d3.jpg",
-            "http://hiphotos.baidu.com/doc/pic/item/f3d3572c11dfa9ec0d3ff5b96ed0f703918fc10f.jpg",
-            "http://hiphotos.baidu.com/doc/pic/item/e61190ef76c6a7efccbce232f6faaf51f3de660f.jpg",
-            "http://hiphotos.baidu.com/doc/pic/item/b7fd5266d016092481043d23de0735fae6cd34e0.jpg",
-            "http://hiphotos.baidu.com/doc/pic/item/902397dda144ad34cd927db7daa20cf431ad85d5.jpg",
-            "http://hiphotos.baidu.com/doc/pic/item/9d82d158ccbf6c812fc8ece0ba3eb13533fa403f.jpg",
-            "http://hiphotos.baidu.com/doc/pic/item/43a7d933c895d143a51b067a7ff082025aaf077d.jpg",
-            "http://hiphotos.baidu.com/doc/pic/item/77c6a7efce1b9d16fd772de4ffdeb48f8d546486.jpg",
-            "http://hiphotos.baidu.com/doc/pic/item/6609c93d70cf3bc746fc27e8d900baa1cd112a32.jpg",
-            "http://hiphotos.baidu.com/doc/pic/item/4a36acaf2edda3cc5729ce070be93901203f92c3.jpg",
+            "http://hiphotos.baidu.com/doc/pic/item/8d5494eef01f3a29de01404d9a25bc315d607c6c.jpg",
+            "http://hiphotos.baidu.com/doc/pic/item/4ec2d5628535e5ddd960d8a674c6a7efce1b627e.jpg",
+            "http://hiphotos.baidu.com/doc/pic/item/4ec2d5628535e5ddcc19c19f7ac6a7efce1b62bc.jpg",
+            "http://hiphotos.baidu.com/doc/pic/item/eac4b74543a982263c711c518082b9014a90eb10.jpg",
+            "http://hiphotos.baidu.com/doc/pic/item/5fdf8db1cb134954cd260fea5c4e9258d1094a00.jpg",
+            "http://hiphotos.baidu.com/doc/pic/item/3812b31bb051f819a9c6e058dcb44aed2f73e7c5.jpg",
+            "http://hiphotos.baidu.com/doc/pic/item/8b82b9014a90f603f6cadfbd3312b31bb151edd6.jpg",
+            "http://hiphotos.baidu.com/doc/pic/item/a044ad345982b2b7c8bf479e3dadcbef76099b43.jpg",
+            "http://hiphotos.baidu.com/doc/pic/item/1c950a7b02087bf4072e6d34f5d3572c10dfcf28.jpg",
+            "http://hiphotos.baidu.com/doc/pic/item/574e9258d109b3dee04af78bc8bf6c81810a4c5f.jpg",
     };
 
     @Override
