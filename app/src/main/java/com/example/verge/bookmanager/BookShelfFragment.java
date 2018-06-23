@@ -2,6 +2,7 @@ package com.example.verge.bookmanager;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.BitmapFactory;
@@ -12,10 +13,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.verge.DAO.BookDAO;
@@ -53,6 +56,18 @@ public class BookShelfFragment extends Fragment{
                 return false;
             }
         };
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView bookid = view.findViewById(R.id.bookid);
+                String bId=bookid.getText().toString();
+                Intent intent = new Intent(getActivity(),BookDetailsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("id",bId);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
         simpleCursorAdapter.setViewBinder(viewBinder);
         gridView.setAdapter(simpleCursorAdapter);
         return  bookShelfLayout;

@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class Book_details extends AppCompatActivity {
@@ -13,6 +15,7 @@ public class Book_details extends AppCompatActivity {
     TextView textView4;
     TextView textView5;
     TextView textView6;
+    Button addToShelf;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +26,7 @@ public class Book_details extends AppCompatActivity {
         textView4=findViewById(R.id.textview4);
         textView5=findViewById(R.id.textview5);
         textView6=findViewById(R.id.textview6);
+        addToShelf=findViewById(R.id.addToShelf);
         Intent intent=getIntent();
         String details=intent.getStringExtra("details");
         String title=intent.getStringExtra("title");
@@ -37,6 +41,12 @@ public class Book_details extends AppCompatActivity {
         textView4.setText(price);
         textView5.setText(details);
         textView6.setText(book_url);
+        addToShelf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
 }

@@ -35,4 +35,11 @@
     <string name="top_head">开发者个人信息</string>
     <string name="text_back">返回</string>
     <string name="text_forward">在线搜索</string>
+    <string name="bookImage">图书图片</string>
+    <string name="textViewDefault">null</string>
+    <string name="bookshelf">书架</string>
+    <string name="store">书城</string>
+    <string name="my">我的</string>
+    <string name="addToBookShelf">添加到书架</string>
+    <string name="removeFromShelf">从书架移除</string>
 </resources>

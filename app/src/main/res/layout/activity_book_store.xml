@@ -5,7 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
+<android.support.v4.widget.SwipeRefreshLayout
+    android:id="@+id/fresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <GridView
         android:id="@+id/grid_view"
         android:layout_width="match_parent"
@@ -17,13 +20,15 @@
         android:stretchMode="columnWidth"
         android:verticalSpacing="2dp" />
 
-<!--    <android.support.design.widget.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabBackground="@color/colorPrimaryDark"
-        app:tabGravity="fill"
-        app:tabMode="fixed"/>-->
+    <!--    <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabBackground="@color/colorPrimaryDark"
+            app:tabGravity="fill"
+            app:tabMode="fixed"/>-->
+</android.support.v4.widget.SwipeRefreshLayout>
+
 
 
 </LinearLayout>

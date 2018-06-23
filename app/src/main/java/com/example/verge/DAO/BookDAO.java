@@ -51,7 +51,7 @@ public class BookDAO extends AppCompatActivity {
                 updateBook();
                 break;
             default:
-                queryBook();
+//                queryBook();
                 break;
         }
     }
@@ -61,9 +61,9 @@ public class BookDAO extends AppCompatActivity {
         // TODO: 2018/6/19
     }
 
-    public ArrayList<Book> queryBook() {
+    public ArrayList<Book> queryBook(String sql) {
         // TODO: 2018/6/19
-        String sql = bundle.getString("sql");
+        //String sql = bundle.getString("sql");
         SQLiteDatabase sdb = dbHelper.getReadableDatabase();
         Cursor cursor = sdb.rawQuery(sql, null);
         if (cursor.moveToFirst()) {
@@ -74,7 +74,8 @@ public class BookDAO extends AppCompatActivity {
                 book.setTitle(cursor.getString(1));
                 book.setWriter(cursor.getString(2));
                 book.setPublishOrg(cursor.getString(3));
-                book.setType(cursor.getString(4));
+                book.setUrl(cursor.getString(4));
+                book.setType(cursor.getString(5));
                 data.add(book);
             } while (cursor.moveToNext());
             cursor.close();

@@ -37,4 +37,9 @@
         android:layout_height="wrap_content"
         android:padding="20sp"
         android:autoLink="web" />
+    <Button
+        android:id="@+id/addToShelf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addToBookShelf"/>
 </LinearLayout>

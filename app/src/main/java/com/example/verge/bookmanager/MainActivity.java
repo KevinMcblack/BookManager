@@ -102,6 +102,7 @@ public class MainActivity extends TitleActivity {
                 } else {
                     transaction.show(bookShelfFragment);
                 }
+                setTitle(R.string.bookshelf);
                 break;
             case 1:
                 storeIcon.setImageResource(R.drawable.store1);
@@ -114,6 +115,7 @@ public class MainActivity extends TitleActivity {
                 } else {
                     transaction.show(storeFragment);
                 }
+                setTitle(R.string.store);
                 break;
             case 2:
                 myIcon.setImageResource(R.drawable.my1);
@@ -125,6 +127,7 @@ public class MainActivity extends TitleActivity {
                 } else {
                     transaction.show(myFragment);
                 }
+                setTitle(R.string.my);
                 break;
         }
         transaction.commit();
