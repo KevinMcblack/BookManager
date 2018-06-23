@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import static com.example.verge.bookmanager.BookStore.eatFoodyImages;
+
 //精选
 public class StoreFragment extends Fragment {
     public static String[] details = {"《三国演义》描写的是从东汉末年到西晋初年之间近一百年的历史风云。全书反映了三国时代的政治军事斗争，反映了三国时代各类社会矛盾的渗透与转化，概括了这一时代的历史巨变，塑造了一批咤叱风云的英雄人物。在对三国历史的把握上，作者表现出明显的拥刘反曹倾向，以刘备集团作为描写的中心，对刘备集团的主要人物加以歌颂，对曹操则极力揭露鞭挞。今天我们对于作者的这种拥刘反曹的倾向应有辩证的认识，尊刘反曹是民间传说的主要倾向，在罗贯中时代隐含着人民对汉族复兴的希望。",
