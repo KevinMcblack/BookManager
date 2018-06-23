@@ -29,9 +29,12 @@ public class BookDAO{
 
     }
 
-    public int addBook() {
+    public int addBook(Book book) {
+        final SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String sql="insert into books values(?,?,?,?,?,?,?,?)";
+        db.execSQL(sql,new String[]{book.getId(),book.getTitle(),book.getWriter(),
+                book.getPublishOrg(),book.getUrl(),String.valueOf(book.getType()),String.valueOf(book.getUserId()),book.getBookUrl()});
         return 0;
-        // TODO: 2018/6/19
     }
 
     public ArrayList<Book> queryBook(String sql) {
@@ -49,6 +52,7 @@ public class BookDAO{
                 book.setPublishOrg(cursor.getString(3));
                 book.setUrl(cursor.getString(4));
                 book.setType(cursor.getString(5));
+                book.setBookUrl(cursor.getString(7));
                 data.add(book);
             } while (cursor.moveToNext());
             cursor.close();
@@ -69,7 +73,8 @@ public class BookDAO{
     public int deleteBook(String bookid) {
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
         try{
-            db.execSQL("delete from books where _id='"+bookid+"'");
+            String sql = "delete from books where _id=?";
+            db.execSQL(sql,new String[]{bookid});
             return 1;
         } catch (Exception e){
             e.printStackTrace();

@@ -8,6 +8,15 @@ public class Book {
     private String type;
     private String url;
     private int userId;
+    private String bookUrl;
+
+    public String getBookUrl() {
+        return bookUrl;
+    }
+
+    public void setBookUrl(String bookUrl) {
+        this.bookUrl = bookUrl;
+    }
 
     public int getUserId() {
         return userId;

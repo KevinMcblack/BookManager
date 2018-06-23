@@ -8,8 +8,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.verge.DAO.BookDAO;
+import com.example.verge.model.Book;
 
 public class Book_details extends AppCompatActivity {
     TextView textView1;
@@ -17,7 +19,7 @@ public class Book_details extends AppCompatActivity {
     TextView textView3;
     TextView textView4;
     TextView textView5;
-    TextView textView6;
+    Button readOnline;
     Button addToShelf;
     @SuppressLint({"SetTextI18n", "SetJavaScriptEnabled"})
     @Override
@@ -29,29 +31,30 @@ public class Book_details extends AppCompatActivity {
         textView3=findViewById(R.id.textview3);
         textView4=findViewById(R.id.textview4);
         textView5=findViewById(R.id.textview5);
-        textView6=findViewById(R.id.textview6);
+        readOnline =findViewById(R.id.textview6);
         addToShelf=findViewById(R.id.addToShelf);
         Intent intent=getIntent();
         String details=intent.getStringExtra("details");
-        String title=intent.getStringExtra("title");
-        String writers=intent.getStringExtra("writers");
+        final String title=intent.getStringExtra("title");
+        final String writers=intent.getStringExtra("writers");
         final String book_url=intent.getStringExtra("book_url");
         String price=intent.getStringExtra("price");
         String tags=intent.getStringExtra("tags");
-        String id=intent.getStringExtra("id");
-        String publishOrg=intent.getStringExtra("publishOrg");
+        final String id=intent.getStringExtra("id");
+        final String publishOrg=intent.getStringExtra("publishOrg");
+        final String photo = intent.getStringExtra("photo");
         Log.i(title, "onCreate: ---------------------------------");
         textView1.setText("书名："+title);
         textView2.setText("作者："+writers);
         textView3.setText("标签："+tags);
         textView4.setText("价格："+price);
         textView5.setText("简介："+details);
-        textView6.setText("试看链接："+book_url);
-        textView6.setOnClickListener(new View.OnClickListener() {
+        readOnline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String url = book_url;
                 Intent intent = new Intent(Book_details.this,Book_ToWeb.class);
-                intent.putExtra("url",book_url);
+                intent.putExtra("url",url);
                 startActivity(intent);
             }
         });
@@ -59,7 +62,17 @@ public class Book_details extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 BookDAO dao = new BookDAO(Book_details.this);
-                dao.addBook();
+                Book book = new Book();
+                book.setId(id);
+                book.setWriter(writers);
+                book.setUrl(photo);
+                book.setType("book");
+                book.setPublishOrg(publishOrg);
+                book.setTitle(title);
+                book.setUserId(((BaseApplication)getApplication()).getUserId());
+                book.setBookUrl(book_url);
+                dao.addBook(book);
+                Toast.makeText(Book_details.this,"添加完成",Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -84,12 +84,12 @@ public class Test1 {
             JSONObject username = jsonArray1.getJSONObject(0);
             String username2 = username.getString("name");
             System.out.println(username2);*/
-            JSONArray jsonArray1 = JSONArray.fromObject(jUser.getString("publishOrgs"));
+            /*JSONArray jsonArray1 = JSONArray.fromObject(jUser.getString("publishOrgs"));
             JSONObject username = jsonArray1.getJSONObject(0);
             String username2 = username.getString("name");
-            System.out.println(username2);
-                /*System.out.println(jUser.getString("url"));
-                System.out.println(jUser.getString("abstract"));
+            System.out.println(username2);*/
+                System.out.println(jUser.getString("url"));
+                /*System.out.println(jUser.getString("abstract"));
 
 	            System.out.println(jUser.getString("price"));*/
             /*System.out.println(jUser.getString("coverUrl"));

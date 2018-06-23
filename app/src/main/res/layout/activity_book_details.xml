@@ -31,11 +31,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20sp" />
-    <TextView
+    <Button
         android:id="@+id/textview6"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10sp"
+        android:text="@string/readOnline"
         android:autoLink="web" />
     <Button
         android:id="@+id/addToShelf"

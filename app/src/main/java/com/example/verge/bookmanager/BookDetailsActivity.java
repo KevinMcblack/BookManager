@@ -34,6 +34,7 @@ public class BookDetailsActivity extends AppCompatActivity {
     TextView bookType;
     TextView publishOrgName;
     Button removeBook;
+    Button readOnline;
     ArrayList<Book> arrayList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +46,9 @@ public class BookDetailsActivity extends AppCompatActivity {
         bookType = findViewById(R.id.bookType);
         publishOrgName = findViewById(R.id.publishOrgName);
         removeBook = findViewById(R.id.remove);
+        readOnline = findViewById(R.id.readOnline);
         Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
+        final Bundle bundle = intent.getExtras();
         assert bundle != null;
         String id = bundle.getString("id");
         final BookDAO dao = new BookDAO(this);
@@ -80,6 +82,15 @@ public class BookDetailsActivity extends AppCompatActivity {
                     }
                 });
                 builder.show();
+            }
+        });
+        readOnline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = arrayList.get(0).getBookUrl();
+                Intent intent = new Intent(BookDetailsActivity.this,Book_ToWeb.class);
+                intent.putExtra("url",url);
+                startActivity(intent);
             }
         });
     }

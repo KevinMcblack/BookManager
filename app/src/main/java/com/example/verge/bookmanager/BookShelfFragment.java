@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,13 +30,12 @@ public class BookShelfFragment extends Fragment{
     GridView gridView;
     BookDAO bookDAO;
     int userid;
-    BookDBHelper dbHelper;
     SimpleCursorAdapter simpleCursorAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View bookShelfLayout = inflater.inflate(R.layout.activity_book_store ,container,false);
+        swipeRefreshLayout = bookShelfLayout.findViewById(R.id.fresh);
         gridView=  bookShelfLayout.findViewById(R.id.grid_view);
-        /*swipeRefreshLayout = bookShelfLayout.findViewById(R.id.fresh);*/
         bookDAO = new BookDAO(getActivity());
         userid = ((BaseApplication)getActivity().getApplication()).getUserId();
         Cursor cursor = bookDAO.queryBook1(userid);
@@ -58,6 +58,22 @@ public class BookShelfFragment extends Fragment{
                 return false;
             }
         };
+        simpleCursorAdapter.setViewBinder(viewBinder);
+        gridView.setAdapter(simpleCursorAdapter);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Cursor cursor = bookDAO.queryBook1(userid);
+                        simpleCursorAdapter.swapCursor(null);
+                        simpleCursorAdapter.swapCursor(cursor);
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                },1000);
+            }
+        });
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -70,8 +86,6 @@ public class BookShelfFragment extends Fragment{
                 startActivityForResult(intent,0);
             }
         });
-        simpleCursorAdapter.setViewBinder(viewBinder);
-        gridView.setAdapter(simpleCursorAdapter);
         return  bookShelfLayout;
     }
 

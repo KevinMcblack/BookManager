@@ -42,6 +42,7 @@ public class Search_result extends AppCompatActivity {
                 Log.i(String.valueOf(id), "onItemClick:----------------");
                 Intent intent = new Intent(Search_result.this, Book_details.class);
                 intent.putExtra("details",details[(int) id]);
+                intent.putExtra("photo",photo[(int) id]);
                 intent.putExtra("title",title[(int) id]);
                 intent.putExtra("writers",writers[(int) id]);
                 intent.putExtra("book_url",book_url[(int) id]);

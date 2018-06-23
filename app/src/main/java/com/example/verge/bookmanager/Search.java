@@ -64,7 +64,7 @@ public class Search extends AppCompatActivity {
                             JSONObject jUser = jsonArray.getJSONObject(i);
                             JSONArray jsonArray1 = JSONArray.fromObject(jUser.getString("writers"));
                             JSONObject username = jsonArray1.getJSONObject(0);
-                            JSONArray jsonArray2 = JSONArray.fromObject(jUser.getString("publishOrg"));
+                            JSONArray jsonArray2 = JSONArray.fromObject(jUser.getString("publishOrgs"));
                             JSONObject username2 = jsonArray2.getJSONObject(0);
                             photo[i+j*10] = jUser.getString("coverUrl");
                             details[i+j*10] = jUser.getString("abstract");
