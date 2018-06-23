@@ -29,6 +29,31 @@ public class Search extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         searchView = findViewById(R.id.searchView);
+        /**
+         * 默认情况下, search widget是"iconified“的，只是用一个图标 来表示它(一个放大镜),
+         * 当用户按下它的时候才显示search box . 你可以调用setIconifiedByDefault(false)让search
+         * box默认都被显示。 你也可以调用setIconified()让它以iconified“的形式显示。
+         */
+        searchView.setIconifiedByDefault(true);
+        /**
+         * 默认情况下是没提交搜索的按钮，所以用户必须在键盘上按下"enter"键来提交搜索.你可以同过setSubmitButtonEnabled(
+         * true)来添加一个提交按钮（"submit" button)
+         * 设置true后，右边会出现一个箭头按钮。如果用户没有输入，就不会触发提交（submit）事件
+         */
+        searchView.setSubmitButtonEnabled(true);
+        /**
+         * 初始是否已经是展开的状态
+         * 写上此句后searchView初始展开的，也就是是可以点击输入的状态，如果不写，那么就需要点击下放大镜，才能展开出现输入框
+         */
+        searchView.onActionViewExpanded();
+        // 设置search view的背景色
+        searchView.setBackgroundColor(0x22ff00ff);
+        /**
+         * 默认情况下, search widget是"iconified“的，只是用一个图标 来表示它(一个放大镜),
+         * 当用户按下它的时候才显示search box . 你可以调用setIconifiedByDefault(false)让search
+         * box默认都被显示。 你也可以调用setIconified()让它以iconified“的形式显示。
+         */
+        searchView.setIconifiedByDefault(true);
         // 设置搜索文本监听
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             // 当点击搜索按钮时触发该方法

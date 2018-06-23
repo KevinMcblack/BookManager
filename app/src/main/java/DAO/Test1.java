@@ -67,7 +67,7 @@ public class Test1 {
         // 请求示例 url 默认请求参数已经做URL编码
         String url = "http://api01.bitspaceman.com:8000/book/baiduread";
         url += "?apikey=eVQVoieFyQYmFgy2EErjfz3Hj5zs7cV5huRh9IF32cmNgMcy68xEsymLeGeIj41y";
-        url += "&kw=红楼梦";//书名模糊查询
+        url += "&kw=三国演义";//书名模糊查询
         url += "&pageToken=1";//第几页
         /*url += "&catid=7_11014";//查询书籍或者查询分类*/
         JSONObject json = getRequestFromUrl(url);
@@ -80,22 +80,22 @@ public class Test1 {
         JSONArray jsonArray = JSONArray.fromObject(json.getString("data"));
         for (int i = 0; i < 10; i++) {
             JSONObject jUser = jsonArray.getJSONObject(i);
-           /* JSONArray jsonArray1 = JSONArray.fromObject(jUser.getString("writers"));
+            /*JSONArray jsonArray1 = JSONArray.fromObject(jUser.getString("writers"));
             JSONObject username = jsonArray1.getJSONObject(0);
             String username2 = username.getString("name");
             System.out.println(username2);*/
-            /*JSONArray jsonArray1 = JSONArray.fromObject(jUser.getString("publishOrgs"));
+           /* JSONArray jsonArray1 = JSONArray.fromObject(jUser.getString("publishOrgs"));
             JSONObject username = jsonArray1.getJSONObject(0);
             String username2 = username.getString("name");
             System.out.println(username2);*/
-                System.out.println(jUser.getString("url"));
-                /*System.out.println(jUser.getString("abstract"));
-
-	            System.out.println(jUser.getString("price"));*/
-            /*System.out.println(jUser.getString("coverUrl"));
-            System.out.println(jUser.getString("title"));
-            System.out.println(jUser.getString("writers"));*/
-                /*System.out.println(jUser.getString("tags"));*/
+                /*System.out.println(jUser.getString("url"));*/
+                System.out.println(jUser.getString("abstract"));
+               /* System.out.println(jUser.getString("id"));*/
+	            //System.out.println(jUser.getString("price"));
+            //System.out.println(jUser.getString("coverUrl"));
+            //System.out.println(jUser.getString("title"));
+            /*System.out.println(jUser.getString("writers"));*/
+                //System.out.println(jUser.getString("tags"));
         }
 
     }
