@@ -7,6 +7,33 @@ public class User implements Serializable {
 	private int id;
 	private String username;
 	private String password;
+	private String phone;
+	private String area;
+	private String sex;
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
 
 	public User() {
 		super();

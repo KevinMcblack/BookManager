@@ -1,9 +1,12 @@
 package com.example.verge.bookmanager;
 
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Handler;
 import android.support.design.widget.TabLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,10 +31,20 @@ public class StoreFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View storeLayout = inflater.inflate(R.layout.activity_book_store, container, false);
-
+        final SwipeRefreshLayout swipeRefreshLayout = storeLayout.findViewById(R.id.fresh);
         GridView gridView = storeLayout.findViewById(R.id.grid_view);
         gridView.setAdapter(new ImageListAdapter(getContext(), eatFoodyImages));
-
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                },1000);
+            }
+        });
         return storeLayout;
     }
 }

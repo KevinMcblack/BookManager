@@ -58,6 +58,7 @@ public class Login extends AppCompatActivity {
 							.show();
 					Intent intent = new Intent(Login.this, MainActivity.class);
 					((BaseApplication)getApplication()).setUserId(flag);
+					((BaseApplication)getApplication()).setPassword(pass);
 					startActivity(intent);
 
 					// 判断用户名是否为空

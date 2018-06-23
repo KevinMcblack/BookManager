@@ -30,8 +30,8 @@ public class UserDAO {
 	// 注册用
 	public boolean register(User user) {
 		SQLiteDatabase sdb = dbHelper.getReadableDatabase();
-		String sql = "insert into user(username,password) values(?,?)";
-		Object obj[] = { user.getUsername(), user.getPassword() };
+		String sql = "insert into user(username,password,sex,phone,area) values(?,?,?,?,?)";
+		Object obj[] = { user.getUsername(), user.getPassword() ,user.getSex(), user.getPhone(),user.getArea()};
 		sdb.execSQL(sql, obj);
 		return true;
 	}
@@ -47,5 +47,28 @@ public class UserDAO {
 			return true;
 		}
 		return false;
+	}
+	public void update(User user){
+		SQLiteDatabase sdb = dbHelper.getReadableDatabase();
+		String sql = "update user set username=?,password=?,sex=?,phone=?,area=? where id='"+String.valueOf(user.getId())+"'";
+		Object obj[] = { user.getUsername(), user.getPassword() ,user.getSex(), user.getPhone(),user.getArea()};
+		sdb.execSQL(sql, obj);
+	}
+	public User queryUser(int userid){
+		SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+		User user = new User();
+		String sql="select * from user where id=?";
+		Cursor cursor = sqLiteDatabase.rawQuery(sql,new String[]{String.valueOf(userid)});
+		if (cursor.moveToNext()){
+			user.setId(cursor.getInt(0));
+			user.setUsername(cursor.getString(1));
+			user.setSex(cursor.getString(3));
+			user.setPhone(cursor.getString(4));
+			user.setArea(cursor.getString(5));
+			cursor.close();
+			return user;
+		} else {
+			return null;
+		}
 	}
 }

@@ -42,8 +42,20 @@
     <string name="my">我的</string>
     <string name="addToBookShelf">添加到书架</string>
     <string name="removeFromShelf">从书架移除</string>
+    <string name="userNumber">会员编号:</string>
     <string name="phoneNumber">电话号码：</string>
     <string name="area">地区：</string>
     <string name="sex">性别：</string>
     <string name="readOnline">在线阅读</string>
+    <string name="editUserInfo">修改信息</string>
+    <string name="username">用户名:</string>
+    <string name="newPassword">新密码:</string>
+    <string name="repeatPassword">重复密码:</string>
+    <string name="phone">电话：</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="submitChange">确认修改</string>
+    <string name="registerPhone">请输入电话号码</string>
+    <string name="registerArea">请输入地区</string>
+    <string name="registerSex">请输入性别</string>
 </resources>

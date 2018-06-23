@@ -28,7 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="10sp">
+            android:layout_marginTop="5sp"
+            android:layout_marginBottom="5sp">
             <!--消息-->
             <LinearLayout
                 android:id="@+id/bookShelfLayout"
@@ -46,16 +47,17 @@
 
                     <ImageView
                         android:id="@+id/bookShelfIcon"
-                        android:layout_width="40sp"
-                        android:layout_height="40sp"
+                        android:layout_width="30sp"
+                        android:layout_height="30sp"
                         android:contentDescription="@null"
                         android:src="@drawable/bookshelf" />
 
                     <TextView
                         android:id="@+id/bookShelfText"
-                        android:layout_width="40sp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="书   架" />
+                        android:layout_gravity="center"
+                        android:text="书架" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -75,8 +77,8 @@
 
                     <ImageView
                         android:id="@+id/storeIcon"
-                        android:layout_width="40sp"
-                        android:layout_height="40sp"
+                        android:layout_width="30sp"
+                        android:layout_height="30sp"
                         android:contentDescription="@null"
                         android:src="@drawable/store" />
 
@@ -84,7 +86,7 @@
                         android:id="@+id/storeText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="书   城" />
+                        android:text="书城" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -104,15 +106,15 @@
 
                     <ImageView
                         android:id="@+id/myIcon"
-                        android:layout_width="40sp"
-                        android:layout_height="40sp"
+                        android:layout_width="30sp"
+                        android:layout_height="30sp"
                         android:src="@drawable/my" />
 
                     <TextView
                         android:id="@+id/myText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="我   的" />
+                        android:text="我的" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
