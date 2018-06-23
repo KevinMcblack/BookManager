@@ -19,7 +19,7 @@ public class Book_details extends AppCompatActivity {
     TextView textView5;
     TextView textView6;
     Button addToShelf;
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "SetJavaScriptEnabled"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,9 +35,11 @@ public class Book_details extends AppCompatActivity {
         String details=intent.getStringExtra("details");
         String title=intent.getStringExtra("title");
         String writers=intent.getStringExtra("writers");
-        String book_url=intent.getStringExtra("book_url");
+        final String book_url=intent.getStringExtra("book_url");
         String price=intent.getStringExtra("price");
         String tags=intent.getStringExtra("tags");
+        String id=intent.getStringExtra("id");
+        String publishOrg=intent.getStringExtra("publishOrg");
         Log.i(title, "onCreate: ---------------------------------");
         textView1.setText("书名："+title);
         textView2.setText("作者："+writers);
@@ -45,6 +47,14 @@ public class Book_details extends AppCompatActivity {
         textView4.setText("价格："+price);
         textView5.setText("简介："+details);
         textView6.setText("试看链接："+book_url);
+        textView6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Book_details.this,Book_ToWeb.class);
+                intent.putExtra("url",book_url);
+                startActivity(intent);
+            }
+        });
         addToShelf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

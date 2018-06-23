@@ -16,6 +16,8 @@ public class Search_result extends AppCompatActivity {
     String [] title = null;
     String [] price = null;
     String [] tags = null;
+    String [] idd = null;
+    String [] publishOrg = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,8 @@ public class Search_result extends AppCompatActivity {
         title=b.getStringArray("title");
         price=b.getStringArray("price");
         tags=b.getStringArray("tags");
-
+        idd=b.getStringArray("id");
+        publishOrg=b.getStringArray("publishOrg");
         GridView gridView = findViewById(R.id.grid_view);
         gridView.setAdapter(new ImageListAdapter(Search_result.this,photo));
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -44,6 +47,8 @@ public class Search_result extends AppCompatActivity {
                 intent.putExtra("book_url",book_url[(int) id]);
                 intent.putExtra("price",price[(int) id]);
                 intent.putExtra("tags",tags[(int) id]);
+                intent.putExtra("publishOrg",publishOrg[(int) id]);
+                intent.putExtra("id",idd[(int) id]);
                 startActivity(intent);//启动Activity
             }
         });

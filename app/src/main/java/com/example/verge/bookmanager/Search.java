@@ -42,14 +42,13 @@ public class Search extends AppCompatActivity {
                 String[] photo = new String[100];
                 String[] details = new String[100];
                 String[] writers = new String[100];
-/*
                 String[] publishOrg = new String[100];
-*/
+                String[] id = new String[100];
                 String[] book_url = new String[100];
                 String[] title = new String[100];
                 String[] price = new String[100];
                 String[] tags = new String[100];
-                for (int j = 0; j < 3; j++) {
+                for (int j = 0; j < 2; j++) {
                     JSONObject json = null;
                     url = "http://api01.bitspaceman.com:8000/book/baiduread";
                     url += "?apikey=eVQVoieFyQYmFgy2EErjfz3Hj5zs7cV5huRh9IF32cmNgMcy68xEsymLeGeIj41y";
@@ -65,14 +64,17 @@ public class Search extends AppCompatActivity {
                             JSONObject jUser = jsonArray.getJSONObject(i);
                             JSONArray jsonArray1 = JSONArray.fromObject(jUser.getString("writers"));
                             JSONObject username = jsonArray1.getJSONObject(0);
+                            JSONArray jsonArray2 = JSONArray.fromObject(jUser.getString("publishOrg"));
+                            JSONObject username2 = jsonArray2.getJSONObject(0);
                             photo[i+j*10] = jUser.getString("coverUrl");
                             details[i+j*10] = jUser.getString("abstract");
                             writers[i+j*10] = username.getString("name");
-                    /*publishOrg[i]=jUser.getString("publishOrg");*/
+                            publishOrg[i+j*10]=username2.getString("name");
                             book_url[i+j*10] = jUser.getString("url");
                             title[i+j*10] = jUser.getString("title");
                             price[i+j*10] = jUser.getString("price");
                             tags[i+j*10] = jUser.getString("tags");
+                            id[i+j*10]=jUser.getString("id");
                         }
 
                     } catch (IOException e) {
@@ -91,6 +93,8 @@ public class Search extends AppCompatActivity {
                 b.putStringArray("title", title);
                 b.putStringArray("price", price);
                 b.putStringArray("tags", tags);
+                b.putStringArray("id",id);
+                b.putStringArray("publishOrg",publishOrg);
                 intent.putExtras(b);
 
                 intent.setClass(Search.this, Search_result.class);

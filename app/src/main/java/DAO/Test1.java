@@ -80,7 +80,11 @@ public class Test1 {
         JSONArray jsonArray = JSONArray.fromObject(json.getString("data"));
         for (int i = 0; i < 10; i++) {
             JSONObject jUser = jsonArray.getJSONObject(i);
-            JSONArray jsonArray1 = JSONArray.fromObject(jUser.getString("writers"));
+           /* JSONArray jsonArray1 = JSONArray.fromObject(jUser.getString("writers"));
+            JSONObject username = jsonArray1.getJSONObject(0);
+            String username2 = username.getString("name");
+            System.out.println(username2);*/
+            JSONArray jsonArray1 = JSONArray.fromObject(jUser.getString("publishOrgs"));
             JSONObject username = jsonArray1.getJSONObject(0);
             String username2 = username.getString("name");
             System.out.println(username2);
