@@ -65,7 +65,6 @@ public class Book_Api extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_book__api);
         Intent intent = getIntent();
         String data = intent.getStringExtra("data");
         // 请求示例 url 默认请求参数已经做URL编码
@@ -88,30 +87,20 @@ public class Book_Api extends AppCompatActivity {
         String[] title=new String[100];
         String[] price=new String[100];
         String[] tags=new String[100];
-        //System.out.println(url);
-        //System.out.println(json.toString());
-        //System.out.print(json.getString("appCode"));
-        //System.out.println(json.getInt("pageToken"));
-        //System.out.println(json.getString("data"));
         //将jsonArray字符串转化为JSONArray
         JSONArray jsonArray = JSONArray.fromObject(json.getString("data"));
         for (int i = 0; i < 10; i++) {
             JSONObject jUser = jsonArray.getJSONObject(i);
-            //System.out.println(jUser.getString("url"));
-            System.out.println(jUser.getString("abstract"));
-            System.out.println(jUser.getString("writers"));
-            //System.out.println(jUser.getString("price"));
-            System.out.println(jUser.getString("coverUrl"));
+            JSONArray jsonArray1 = JSONArray.fromObject(jUser.getString("writers"));
+            JSONObject username = jsonArray1.getJSONObject(0);
             photo[i] = jUser.getString("coverUrl");
             details[i] = jUser.getString("abstract");
-            writers[i] = jUser.getString("writers");
+            writers[i] = username.getString("name");
             /*publishOrg[i]=jUser.getString("publishOrg");*/
             book_url[i]=jUser.getString("url");
             title[i]=jUser.getString("title");
             price[i]=jUser.getString("price");
             tags[i]=jUser.getString("tags");
-            System.out.println(jUser.getString("tags"));
-
         }
         //打开另一个Activity,一个Intent对象代表一个意图
         intent = new Intent();

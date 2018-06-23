@@ -1,5 +1,6 @@
 package com.example.verge.bookmanager;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ public class Book_details extends AppCompatActivity {
     TextView textView5;
     TextView textView6;
     Button addToShelf;
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,12 +37,12 @@ public class Book_details extends AppCompatActivity {
         String price=intent.getStringExtra("price");
         String tags=intent.getStringExtra("tags");
         Log.i(title, "onCreate: ---------------------------------");
-        textView1.setText(title);
-        textView2.setText(writers);
-        textView3.setText(tags);
-        textView4.setText(price);
-        textView5.setText(details);
-        textView6.setText(book_url);
+        textView1.setText("书名："+title);
+        textView2.setText("作者："+writers);
+        textView3.setText("标签："+tags);
+        textView4.setText("价格："+price);
+        textView5.setText("简介："+details);
+        textView6.setText("试看链接："+book_url);
         addToShelf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

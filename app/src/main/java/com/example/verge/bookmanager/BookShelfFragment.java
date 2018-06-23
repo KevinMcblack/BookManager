@@ -34,7 +34,7 @@ public class BookShelfFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View bookShelfLayout = inflater.inflate(R.layout.activity_book_store ,container,false);
         gridView=  bookShelfLayout.findViewById(R.id.grid_view);
-        swipeRefreshLayout = bookShelfLayout.findViewById(R.id.fresh);
+        /*swipeRefreshLayout = bookShelfLayout.findViewById(R.id.fresh);*/
         bookDAO = new BookDAO(getActivity());
         Cursor cursor = bookDAO.queryBook1();
         String[] from={"coverUrl","_id"};
