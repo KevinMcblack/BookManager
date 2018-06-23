@@ -28,6 +28,7 @@ public class BookShelfFragment extends Fragment{
     SwipeRefreshLayout swipeRefreshLayout;
     GridView gridView;
     BookDAO bookDAO;
+    int userid;
     BookDBHelper dbHelper;
     SimpleCursorAdapter simpleCursorAdapter;
     @Override
@@ -36,7 +37,8 @@ public class BookShelfFragment extends Fragment{
         gridView=  bookShelfLayout.findViewById(R.id.grid_view);
         /*swipeRefreshLayout = bookShelfLayout.findViewById(R.id.fresh);*/
         bookDAO = new BookDAO(getActivity());
-        Cursor cursor = bookDAO.queryBook1();
+        userid = ((BaseApplication)getActivity().getApplication()).getUserId();
+        Cursor cursor = bookDAO.queryBook1(userid);
         String[] from={"coverUrl","_id"};
         int[] to={R.id.bookImage,R.id.bookid};
         simpleCursorAdapter = new SimpleCursorAdapter(getContext(),R.layout.layout_bookshelf,cursor,from,to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
@@ -65,11 +67,27 @@ public class BookShelfFragment extends Fragment{
                 Bundle bundle = new Bundle();
                 bundle.putString("id",bId);
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivityForResult(intent,0);
             }
         });
         simpleCursorAdapter.setViewBinder(viewBinder);
         gridView.setAdapter(simpleCursorAdapter);
         return  bookShelfLayout;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode){
+            case 0:
+                Cursor cursor = bookDAO.queryBook1(userid);
+                simpleCursorAdapter.swapCursor(null);
+                simpleCursorAdapter.swapCursor(cursor);
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+        }
     }
 }

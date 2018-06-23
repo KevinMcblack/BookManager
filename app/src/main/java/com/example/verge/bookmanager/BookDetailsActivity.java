@@ -1,15 +1,21 @@
 package com.example.verge.bookmanager;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.verge.DAO.BookDAO;
 import com.example.verge.model.Book;
@@ -38,11 +44,12 @@ public class BookDetailsActivity extends AppCompatActivity {
         author = findViewById(R.id.author);
         bookType = findViewById(R.id.bookType);
         publishOrgName = findViewById(R.id.publishOrgName);
+        removeBook = findViewById(R.id.remove);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         assert bundle != null;
         String id = bundle.getString("id");
-        BookDAO dao = new BookDAO(this);
+        final BookDAO dao = new BookDAO(this);
         arrayList = dao.queryBook("select * from books where _id = '"+id+"'");
         ShowNetPicThread readImage = new ShowNetPicThread();
         readImage.run();
@@ -50,6 +57,31 @@ public class BookDetailsActivity extends AppCompatActivity {
         author.setText(String.format("作者：%s", arrayList.get(0).getWriter()));
         bookType.setText(String.format("类型：%s", arrayList.get(0).getType()));
         publishOrgName.setText(String.format("出版社：%s", arrayList.get(0).getPublishOrg()));
+        removeBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(BookDetailsActivity.this);
+                builder.setTitle("确认信息");
+                builder.setMessage("确认删除这本书吗");
+                builder.setPositiveButton("确定", new android.content.DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //TODO: 2018/6/19
+                        int res = dao.deleteBook(arrayList.get(0).getId());
+                        Toast.makeText(BookDetailsActivity.this,"删除完成",Toast.LENGTH_SHORT).show();
+                        setResult(0);
+                        finish();
+                    }
+                });
+                builder.setNegativeButton("取消", new android.content.DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        setResult(1);
+                    }
+                });
+                builder.show();
+            }
+        });
     }
     /**
      * 显示背景图片的内部类子线程

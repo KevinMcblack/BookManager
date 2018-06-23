@@ -52,11 +52,12 @@ public class Login extends AppCompatActivity {
 				String name = username.getText().toString();
 				String pass = password.getText().toString();
 				UserDAO uService = new UserDAO(Login.this);
-				boolean flag = uService.login(name, pass);
-				if (flag) {
+				int flag = uService.login(name, pass);
+				if (flag!=-1) {
 					Toast.makeText(Login.this, "登录成功", Toast.LENGTH_SHORT)
 							.show();
 					Intent intent = new Intent(Login.this, MainActivity.class);
+					((BaseApplication)getApplication()).setUserId(flag);
 					startActivity(intent);
 
 					// 判断用户名是否为空

@@ -24,11 +24,11 @@ public class BookDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql="create table books(_id varchar(50) primary key,title varchar(50),writer varchar(50),publishOrg varchar(50)," +
-                "coverUrl varchar(100),type varchar(50));";
+                "coverUrl varchar(100),type varchar(50),userid integer);";
         db.execSQL(sql);
         Log.i("TAG", "create Database------------->");
-        sql="insert into books values('dss','dsa','df','dfs','"+eatFoodyImages[0].toString()+"','dsfd'),('ds1s','dsa','df','dfs','"+eatFoodyImages[1].toString()+"','dsfd')," +
-                "('ds2s','dsa','df','dfs','"+eatFoodyImages[2].toString()+"','dsfd'),('ds3s','dsa','df','dfs','"+eatFoodyImages[3].toString()+"','dsfd')";
+        sql="insert into books values('1','dsa','df','dfs','"+eatFoodyImages[0].toString()+"','dsfd','0'),('2','dsa','df','dfs','"+eatFoodyImages[1].toString()+"','dsfd','0')," +
+                "('2','dsa','df','dfs','"+eatFoodyImages[2].toString()+"','dsfd','0'),('3','dsa','df','dfs','"+eatFoodyImages[3].toString()+"','dsfd','0')";
         db.execSQL(sql);
     }
 

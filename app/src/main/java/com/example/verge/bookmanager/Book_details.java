@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.verge.DAO.BookDAO;
+
 public class Book_details extends AppCompatActivity {
     TextView textView1;
     TextView textView2;
@@ -46,7 +48,8 @@ public class Book_details extends AppCompatActivity {
         addToShelf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                BookDAO dao = new BookDAO(Book_details.this);
+                dao.addBook();
             }
         });
 
