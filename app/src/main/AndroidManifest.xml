@@ -30,6 +30,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".EditUserActivity" />
+        <activity android:name=".LocalSearch" />
+        <activity android:name=".LoaclSearchResultActivity" />
+        <activity android:name=".EditEvaluationActivity"></activity>
     </application>
 
 </manifest>

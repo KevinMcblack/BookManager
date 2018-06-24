@@ -17,21 +17,21 @@ import android.widget.Toast;
  * 3）在TitleActivity中实现标题栏以下内容区域的切换；
  */
 public class TitleActivity extends Activity implements View.OnClickListener {
-    private static final String TAG = "TitleActivity";
-    private RelativeLayout mLayoutTitleBar;
-    private TextView mTitleTextView;
-    private Button mBackwardbButton;
-    private Button mForwardButton;
-    private FrameLayout mContentLayout;
+    protected static final String TAG = "TitleActivity";
+    protected RelativeLayout mLayoutTitleBar;
+    protected TextView mTitleTextView;
+    protected Button mBackwardbButton;
+    protected Button mForwardButton;
+    protected FrameLayout mContentLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        super.setContentView(R.layout.activity_title);
         setupViews();   //加载 activity_title 布局 ，并获取标题及两侧按钮
     }
 
-    private void setupViews() {
-        super.setContentView(R.layout.activity_title);
+    protected void setupViews() {
         mTitleTextView = findViewById(R.id.text_title);
         mContentLayout = findViewById(R.id.layout_content);
         /*mBackwardbButton = (Button) findViewById(R.id.button_backward);*/
@@ -39,8 +39,15 @@ public class TitleActivity extends Activity implements View.OnClickListener {
         mForwardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TitleActivity.this, SearchActivity.class);
-                startActivity(intent);
+                int flag = ((BaseApplication)getApplication()).getFlag();
+                Intent intent;
+                if(flag==0){
+                    intent = new Intent(TitleActivity.this, SearchActivity.class);
+                    startActivity(intent);
+                } else {
+                    intent = new Intent(TitleActivity.this, LocalSearch.class);
+                    startActivityForResult(intent,1);
+                }
             }
         });
     }
@@ -104,6 +111,9 @@ public class TitleActivity extends Activity implements View.OnClickListener {
         mTitleTextView.setText(titleId);
     }
 
+    public void setmForwardButtonText(int text){
+        mForwardButton.setText(text);
+    }
     //设置标题内容
     @Override
     public void setTitle(CharSequence title) {

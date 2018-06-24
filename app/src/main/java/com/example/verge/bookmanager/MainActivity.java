@@ -1,5 +1,6 @@
 package com.example.verge.bookmanager;
 
+import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -67,7 +68,27 @@ public class MainActivity extends TitleActivity {
             window.setStatusBarColor(getResources().getColor(R.color.action_bar_color));
         }
     }
-
+    @Override
+    protected void setupViews() {
+        mTitleTextView = findViewById(R.id.text_title);
+        mContentLayout = findViewById(R.id.layout_content);
+        /*mBackwardbButton = (Button) findViewById(R.id.button_backward);*/
+        mForwardButton = findViewById(R.id.button_forward);
+        mForwardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int flag = ((BaseApplication)getApplication()).getFlag();
+                Intent intent;
+                if(flag==0){
+                    intent = new Intent(MainActivity.this, SearchActivity.class);
+                    startActivity(intent);
+                } else {
+                    intent = new Intent(MainActivity.this, LocalSearch.class);
+                    startActivityForResult(intent,1);
+                }
+            }
+        });
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -98,6 +119,8 @@ public class MainActivity extends TitleActivity {
                 bookShelfIcon.setImageResource(R.drawable.bookshelf1);
                 storeIcon.setImageResource(R.drawable.store);
                 myIcon.setImageResource(R.drawable.my);
+                setmForwardButtonText(R.string.localSearch);
+                ((BaseApplication)getApplication()).setFlag(1);
                 if (bookShelfFragment == null) {
                     bookShelfFragment = new BookShelfFragment();
                     transaction.add(R.id.content, bookShelfFragment);
@@ -110,6 +133,8 @@ public class MainActivity extends TitleActivity {
                 storeIcon.setImageResource(R.drawable.store1);
                 bookShelfIcon.setImageResource(R.drawable.bookshelf);
                 myIcon.setImageResource(R.drawable.my);
+                setmForwardButtonText(R.string.onlineSearch);
+                ((BaseApplication)getApplication()).setFlag(0);
                 Log.i("单击书城", "更改图片");
                 if (storeFragment == null) {
                     storeFragment = new StoreFragment();
@@ -123,6 +148,8 @@ public class MainActivity extends TitleActivity {
                 myIcon.setImageResource(R.drawable.my1);
                 bookShelfIcon.setImageResource(R.drawable.bookshelf);
                 storeIcon.setImageResource(R.drawable.store);
+                setmForwardButtonText(R.string.onlineSearch);
+                ((BaseApplication)getApplication()).setFlag(0);
                 if (myFragment == null) {
                     myFragment = new MyFragment();
                     transaction.add(R.id.content, myFragment);

@@ -58,4 +58,9 @@
     <string name="registerPhone">请输入电话号码</string>
     <string name="registerArea">请输入地区</string>
     <string name="registerSex">请输入性别</string>
+    <!--<string name="onlineSearch">在线搜索</string>-->
+    <string name="localSearch">本地搜索</string>
+    <string name="onlineSearch">在线搜索</string>
+    <string name="wpingjia">撰写评价</string>
+    <string name="pleaseEvaluation">请输入对此书的个人评价</string>
 </resources>

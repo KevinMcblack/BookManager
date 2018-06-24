@@ -36,7 +36,11 @@ public class BookDAO{
                 book.getPublishOrg(),book.getUrl(),String.valueOf(book.getType()),String.valueOf(book.getUserId()),book.getBookUrl()});
         return 0;
     }
-
+    public Cursor queryBook2(String sql){
+        SQLiteDatabase sdb = dbHelper.getReadableDatabase();
+        Cursor cursor = sdb.rawQuery(sql,null);
+        return cursor;
+    }
     public ArrayList<Book> queryBook(String sql) {
         // TODO: 2018/6/19
         //String sql = bundle.getString("sql");
@@ -53,6 +57,10 @@ public class BookDAO{
                 book.setUrl(cursor.getString(4));
                 book.setType(cursor.getString(5));
                 book.setBookUrl(cursor.getString(7));
+                book.setTag(cursor.getString(8));
+                book.setPingjia(cursor.getString(9));
+                book.setStatus(cursor.getString(10));
+                book.setToid(cursor.getString(11));
                 data.add(book);
             } while (cursor.moveToNext());
             cursor.close();
@@ -69,7 +77,11 @@ public class BookDAO{
     public void updateBook() {
         // TODO: 2018/6/19  
     }
-
+    public void editBook(String id,String content){
+        final SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String sql="update books set pingjia=? where _id=?";
+        db.execSQL(sql,new String[]{content,id});
+    }
     public int deleteBook(String bookid) {
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
         try{

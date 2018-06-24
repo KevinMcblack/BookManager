@@ -24,6 +24,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.verge.DAO.BookDAO;
 import com.example.verge.DAO.BookDBHelper;
+import com.example.verge.model.Book;
+
+import java.util.ArrayList;
 
 public class BookShelfFragment extends Fragment{
     SwipeRefreshLayout swipeRefreshLayout;
@@ -81,7 +84,19 @@ public class BookShelfFragment extends Fragment{
                 String bId=bookid.getText().toString();
                 Intent intent = new Intent(getActivity(),BookDetailsActivity.class);
                 Bundle bundle = new Bundle();
+                ArrayList<Book> arrayList = bookDAO.queryBook("select * from books where _id = '"+bId+"'");
                 bundle.putString("id",bId);
+                bundle.putString("title",arrayList.get(0).getTitle());
+                bundle.putString("writer",arrayList.get(0).getWriter());
+                bundle.putString("type",arrayList.get(0).getType());
+                bundle.putString("publishOrg",arrayList.get(0).getPublishOrg());
+                bundle.putString("url",arrayList.get(0).getUrl());
+                bundle.putString("bookurl",arrayList.get(0).getBookUrl());
+                if (!arrayList.get(0).getPingjia().equals("")){
+                    bundle.putString("pingjia",arrayList.get(0).getPingjia());
+                }
+                bundle.putString("status",arrayList.get(0).getStatus());
+                bundle.putString("toid",arrayList.get(0).getToid());
                 intent.putExtras(bundle);
                 startActivityForResult(intent,0);
             }

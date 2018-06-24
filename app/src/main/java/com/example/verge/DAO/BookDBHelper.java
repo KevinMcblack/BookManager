@@ -29,15 +29,40 @@ public class BookDBHelper extends SQLiteOpenHelper {
             "http://yuedu.baidu.com/ebook/80f7afcb900ef12d2af90242a8956bec0975a5fa?fr=search&type=book",
             "http://yuedu.baidu.com/ebook/2ab2ea14f4335a8102d276a20029bd64793e6241?fr=search&type=book"
     };
-
+    public static String[] tags = {
+            "[三国演义,古典文学,小说,罗贯,古典名著,中国,名著]",
+            "[三国演义,小说,罗贯,古典名著,名著]",
+            "[三国演义,古典文学,,罗贯,古典名著,中国,名著]",
+            "[三国演义,古典文学,小说,中国,名著]",
+            "null",
+            "['小说','名著','中国古典','四大名著']",
+            "null",
+            "['']",
+            "['小说','名著','中国古典','四大名著']",
+            "['运筹帷幄','励志','三国时期','中国经典','三国','故事','文学','四大名著','明清小说','历史小说','呂布','明代','古代','儿童文学','经典推荐','古今地名','天书','曹操','世界名著','滚滚长江罗灌水','三国演义','小时候','未买','六角丛书','Romance','Jins','小说','古代文学','漫畫','文艺','历史地理','中华书局','老羅你真禍害','中国','经典名著','家有藏书','动漫','国学','二年级','少儿','中国文学','回忆','历史','海豚出版社','大陆','中国小说','漫画','中国名著','中国古典文学','谋略','Three','Fiction','李典','童年','罗贯中书','張遼','中国古典','小说闲看','故乡书架','研究','百看不厌','library','整理','剧本','中国画报','图画书','连环画','地图','章回体小说','文学及文艺评论','郑渊洁','通俗小说','明本','張飛','名家改编','罗贯中','本社图书','收藏','三国历史','中国古代文学','很久以前讀的','名著','樂進','文学经典','古典名著','小說','毛宗岗','藏书','陈友琴','古典文学','古典','古']"
+    };
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "create table books(_id varchar(50) primary key,title varchar(50),writer varchar(50),publishOrg varchar(50)," +
-                "coverUrl varchar(100),type varchar(50),userid integer,bookUrl varchar(100));";
+        String sql = "create table books(" +
+                "_id varchar(50) primary key," +
+                "title varchar(50)," +
+                "writer varchar(50)," +
+                "publishOrg varchar(50)," +
+                "coverUrl varchar(100)," +
+                "type varchar(50)," +
+                "userid integer," +
+                "bookUrl varchar(100)," +
+                "booktag varchar(100)," +
+                "pingjia varchar(255)," +
+                "status varchar(255)," +
+                "toId int);";
         db.execSQL(sql);
         Log.i("TAG", "create Database------------->");
-        sql = "insert into books values('1','dsa','df','dfs','" + eatFoodyImages[0].toString() + "','dsfd','0','" + bookUrl[0] + "'),('2','dsa','df','dfs','" + eatFoodyImages[1].toString() + "','dsfd','0','" + bookUrl[1] + "')," +
-                "('3','dsa','df','dfs','" + eatFoodyImages[2].toString() + "','dsfd','0','" + bookUrl[2] + "'),('4','dsa','df','dfs','" + eatFoodyImages[3].toString() + "','dsfd','0','" + bookUrl[3] + "')";
+        sql = "insert into books values" +
+                "('1','dsa','df','dfs','" + eatFoodyImages[0].toString() + "','dsfd','0','" + bookUrl[0] + "','"+tags[0]+"','','已添加','')," +
+                "('2','dsa','df','dfs','" + eatFoodyImages[1].toString() + "','dsfd','0','" + bookUrl[1] + "','"+tags[1]+"','','已添加','')," +
+                "('3','dsa','df','dfs','" + eatFoodyImages[2].toString() + "','dsfd','0','" + bookUrl[2] + "','"+tags[2]+"','','外借中','1')," +
+                "('4','dsa','df','dfs','" + eatFoodyImages[3].toString() + "','dsfd','0','" + bookUrl[3] + "','"+tags[3]+"','评价内容测试','已添加','')";
         db.execSQL(sql);
     }
 

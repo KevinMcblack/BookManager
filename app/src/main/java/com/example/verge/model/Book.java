@@ -9,6 +9,42 @@ public class Book {
     private String url;
     private int userId;
     private String bookUrl;
+    private String tag;
+    private String pingjia;
+    private String status;
+    private String toid;
+
+    public String getPingjia() {
+        return pingjia;
+    }
+
+    public void setPingjia(String pingjia) {
+        this.pingjia = pingjia;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getToid() {
+        return toid;
+    }
+
+    public void setToid(String toid) {
+        this.toid = toid;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
 
     public String getBookUrl() {
         return bookUrl;

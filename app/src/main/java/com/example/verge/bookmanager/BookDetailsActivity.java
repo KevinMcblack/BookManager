@@ -3,6 +3,7 @@ package com.example.verge.bookmanager;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -31,9 +32,11 @@ public class BookDetailsActivity extends AppCompatActivity {
     TextView author;
     TextView bookType;
     TextView publishOrgName;
+    TextView pingjia;
     Button removeBook;
     Button readOnline;
-    ArrayList<Book> arrayList;
+    Button wPingJia;
+    Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,18 +48,24 @@ public class BookDetailsActivity extends AppCompatActivity {
         publishOrgName = findViewById(R.id.publishOrgName);
         removeBook = findViewById(R.id.remove);
         readOnline = findViewById(R.id.readOnline);
-        Intent intent = getIntent();
-        final Bundle bundle = intent.getExtras();
+        pingjia = findViewById(R.id.pingjia);
+        wPingJia = findViewById(R.id.writeP);
+        final Intent intent = getIntent();
+        bundle = intent.getExtras();
         assert bundle != null;
-        String id = bundle.getString("id");
+        //String id = bundle.getString("id");
         final BookDAO dao = new BookDAO(this);
-        arrayList = dao.queryBook("select * from books where _id = '"+id+"'");
+        //arrayList = dao.queryBook("select * from books where _id = '"+id+"'");
         ShowNetPicThread readImage = new ShowNetPicThread();
         readImage.run();
-        bookName.setText(String.format("标题：%s", arrayList.get(0).getTitle()));
-        author.setText(String.format("作者：%s", arrayList.get(0).getWriter()));
-        bookType.setText(String.format("类型：%s", arrayList.get(0).getType()));
-        publishOrgName.setText(String.format("出版社：%s", arrayList.get(0).getPublishOrg()));
+        bookName.setText(String.format("标题：%s", bundle.getString("title")));
+        author.setText(String.format("作者：%s", bundle.getString("writer")));
+        bookType.setText(String.format("类型：%s", bundle.getString("type")));
+        publishOrgName.setText(String.format("出版社：%s", bundle.getString("publishOrg")));
+        if (bundle.getString("pingjia")!=null){
+            pingjia.setVisibility(View.VISIBLE);
+            pingjia.setText(String.format("您的评价：%s", bundle.getString("pingjia")));
+        }
         removeBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +76,7 @@ public class BookDetailsActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //TODO: 2018/6/19
-                        int res = dao.deleteBook(arrayList.get(0).getId());
+                        int res = dao.deleteBook(bundle.getString("id"));
                         Toast.makeText(BookDetailsActivity.this,"删除完成",Toast.LENGTH_SHORT).show();
                         setResult(0);
                         finish();
@@ -85,13 +94,34 @@ public class BookDetailsActivity extends AppCompatActivity {
         readOnline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = arrayList.get(0).getBookUrl();
+                String url = bundle.getString("bookurl");
                 Intent intent = new Intent(BookDetailsActivity.this,BookToWebActivity.class);
                 intent.putExtra("url",url);
                 startActivity(intent);
             }
         });
+        wPingJia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1=new Intent(BookDetailsActivity.this,EditEvaluationActivity.class);
+                intent1.putExtra("id",bundle.getString("id"));
+                startActivityForResult(intent1,0);
+            }
+        });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (resultCode){
+            case 0:pingjia.setVisibility(View.VISIBLE);
+            BookDAO dao = new BookDAO(BookDetailsActivity.this);
+            String sql = "select * from books where _id='"+bundle.getString("id")+"'";
+                ArrayList<Book> arrayList = dao.queryBook(sql);
+                pingjia.setText(String.format("您的评价：%s",arrayList.get(0).getPingjia()));
+                break;
+        }
+    }
+
     /**
      * 显示背景图片的内部类子线程
      *
@@ -104,7 +134,7 @@ public class BookDetailsActivity extends AppCompatActivity {
         public void run() {
             try {
                 // 图片地址,这里是百度获得链接，如果不能显示图片（链接失效）请再百度个链接
-                String urlStr = arrayList.get(0).getUrl();
+                String urlStr = bundle.getString("url");
                 // 将图片地址转化为URL对象
                 URL picUrl = new URL(urlStr);
                 // 获取连接网络的对象（HTTP协议）
@@ -131,8 +161,6 @@ public class BookDetailsActivity extends AppCompatActivity {
                         bookImage.setBackground(pic);
                     }
                 });
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }

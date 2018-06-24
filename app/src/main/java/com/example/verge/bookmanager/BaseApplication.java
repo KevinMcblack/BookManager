@@ -5,6 +5,15 @@ import android.app.Application;
 public class BaseApplication extends Application {
     private int userId;
     private String password;
+    private int flag;
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
 
     public String getPassword() {
         return password;
