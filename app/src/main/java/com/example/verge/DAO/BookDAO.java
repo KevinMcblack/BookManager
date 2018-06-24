@@ -31,7 +31,7 @@ public class BookDAO{
 
     public int addBook(Book book) {
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String sql="insert into books values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql="insert into books values(?,?,?,?,?,?,?,?,?,?,?,?)";
         db.execSQL(sql,new String[]{book.getId(),book.getTitle(),book.getWriter(),
                 book.getPublishOrg(),book.getUrl(),String.valueOf(book.getType()),String.valueOf(book.getUserId()),book.getBookUrl(),book.getTag(),book.getPingjia(),book.getStatus(),book.getToid()});
         return 0;

@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -24,6 +24,7 @@
         android:layout_gravity="center">
 
         <LinearLayout
+            android:background="#ffffff"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -35,6 +36,7 @@
                 >
 
                 <TableRow
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <TextView
@@ -42,9 +44,10 @@
                         android:id="@+id/username"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/username" />
+                        android:text="用户名"  />
 
                     <TextView
+                        android:layout_marginLeft="50dp"
                         android:textSize="18sp"
                         android:id="@+id/usernameText"
                         android:layout_width="0dp"
@@ -54,6 +57,7 @@
                 </TableRow>
 
                 <TableRow
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <TextView
@@ -75,6 +79,7 @@
 
 
                 <TableRow
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
                     <TextView
@@ -96,6 +101,7 @@
                 </TableRow>
 
                 <TableRow
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
                     <TextView
@@ -103,31 +109,34 @@
                         android:id="@+id/sex"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/sex" />
+                        android:text= "性别" />
 
                     <RadioGroup
+                        android:layout_marginLeft="50dp"
                         android:id="@+id/sexGroup"
-                        android:layout_width="0dp"
+                        android:layout_width="113dp"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:orientation="horizontal"
-                        android:layout_weight="1">
+                        >
 
-                    <RadioButton
-                        android:textSize="18sp"
-                        android:id="@+id/male"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/male" />
+                        <RadioButton
+                            android:id="@+id/male"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/male"
+                            android:textSize="18sp" />
 
-                    <RadioButton
-                        android:textSize="18sp"
-                        android:id="@+id/female"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/female" />
+                        <RadioButton
+                            android:id="@+id/female"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/female"
+                            android:textSize="18sp" />
                     </RadioGroup>
                 </TableRow>
                 <TableRow
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <TextView
@@ -148,6 +157,7 @@
                         android:inputType="phone" />
                 </TableRow>
                 <TableRow
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <TextView
@@ -167,18 +177,18 @@
                         android:ems="10"
                         android:inputType="textPersonName"
                         android:text="" />
-                </TableRow>
-                <TableRow>
 
-                    <Button
-                        android:id="@+id/submit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="@string/submitChange"
-                        android:textSize="18sp" />
                 </TableRow>
+                <Button
+                    android:typeface="sans"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:id="@+id/submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/submitChange"
+                    android:textSize="18sp" />
             </TableLayout>
         </LinearLayout>
     </LinearLayout>
