@@ -55,13 +55,13 @@ public class BookDBHelper extends SQLiteOpenHelper {
                 "booktag varchar(100)," +
                 "pingjia varchar(255)," +
                 "status varchar(255)," +
-                "toId int);";
+                "toId vachar(255));";
         db.execSQL(sql);
         Log.i("TAG", "create Database------------->");
         sql = "insert into books values" +
                 "('1','dsa','df','dfs','" + eatFoodyImages[0].toString() + "','dsfd','0','" + bookUrl[0] + "','"+tags[0]+"','','已添加','')," +
                 "('2','dsa','df','dfs','" + eatFoodyImages[1].toString() + "','dsfd','0','" + bookUrl[1] + "','"+tags[1]+"','','已添加','')," +
-                "('3','dsa','df','dfs','" + eatFoodyImages[2].toString() + "','dsfd','0','" + bookUrl[2] + "','"+tags[2]+"','','外借中','1')," +
+                "('3','dsa','df','dfs','" + eatFoodyImages[2].toString() + "','dsfd','0','" + bookUrl[2] + "','"+tags[2]+"','','外借中','admin')," +
                 "('4','dsa','df','dfs','" + eatFoodyImages[3].toString() + "','dsfd','0','" + bookUrl[3] + "','"+tags[3]+"','评价内容测试','已添加','')";
         db.execSQL(sql);
     }

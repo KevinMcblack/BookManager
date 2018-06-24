@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/readOnline"
+        android:id="@+id/readOnline"/>
+    <item android:title="@string/removeFromShelf"
+        android:id="@+id/remove"/>
+    <item android:title="@string/wpingjia"
+        android:id="@+id/pingjia"/>
+    <item android:title="@string/borrowOut"
+        android:id="@+id/borrowOut"/>
+</menu>

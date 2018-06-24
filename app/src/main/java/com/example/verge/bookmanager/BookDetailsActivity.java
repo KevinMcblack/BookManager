@@ -10,8 +10,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,10 +37,8 @@ public class BookDetailsActivity extends AppCompatActivity {
     TextView bookType;
     TextView publishOrgName;
     TextView pingjia;
-    Button removeBook;
-    Button readOnline;
-    Button wPingJia;
     Bundle bundle;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,16 +48,14 @@ public class BookDetailsActivity extends AppCompatActivity {
         author = findViewById(R.id.author);
         bookType = findViewById(R.id.bookType);
         publishOrgName = findViewById(R.id.publishOrgName);
-        removeBook = findViewById(R.id.remove);
-        readOnline = findViewById(R.id.readOnline);
         pingjia = findViewById(R.id.pingjia);
-        wPingJia = findViewById(R.id.writeP);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         final Intent intent = getIntent();
         bundle = intent.getExtras();
         assert bundle != null;
-        //String id = bundle.getString("id");
         final BookDAO dao = new BookDAO(this);
-        //arrayList = dao.queryBook("select * from books where _id = '"+id+"'");
+
         ShowNetPicThread readImage = new ShowNetPicThread();
         readImage.run();
         bookName.setText(String.format("标题：%s", bundle.getString("title")));
@@ -66,60 +66,105 @@ public class BookDetailsActivity extends AppCompatActivity {
             pingjia.setVisibility(View.VISIBLE);
             pingjia.setText(String.format("您的评价：%s", bundle.getString("pingjia")));
         }
-        removeBook.setOnClickListener(new View.OnClickListener() {
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
-            public void onClick(View v) {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(BookDetailsActivity.this);
-                builder.setTitle("确认信息");
-                builder.setMessage("确认删除这本书吗");
-                builder.setPositiveButton("确定", new android.content.DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //TODO: 2018/6/19
-                        int res = dao.deleteBook(bundle.getString("id"));
-                        Toast.makeText(BookDetailsActivity.this,"删除完成",Toast.LENGTH_SHORT).show();
-                        setResult(0);
-                        finish();
-                    }
-                });
-                builder.setNegativeButton("取消", new android.content.DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        setResult(1);
-                    }
-                });
-                builder.show();
-            }
-        });
-        readOnline.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String url = bundle.getString("bookurl");
-                Intent intent = new Intent(BookDetailsActivity.this,BookToWebActivity.class);
-                intent.putExtra("url",url);
-                startActivity(intent);
-            }
-        });
-        wPingJia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent1=new Intent(BookDetailsActivity.this,EditEvaluationActivity.class);
-                intent1.putExtra("id",bundle.getString("id"));
-                startActivityForResult(intent1,0);
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.readOnline:
+                        String url = bundle.getString("bookurl");
+                        Intent intent = new Intent(BookDetailsActivity.this,BookToWebActivity.class);
+                        intent.putExtra("url",url);
+                        startActivity(intent);
+                        break;
+                    case R.id.remove :
+                        String status=bundle.getString("status");
+                        assert status != null;
+                        if(status.equals("已外借")){
+                            DialogDemo.builder(BookDetailsActivity.this,"错误信息","图书已外借不能删除");
+                        } else{
+                            final AlertDialog.Builder builder = new AlertDialog.Builder(BookDetailsActivity.this);
+                            builder.setTitle("确认信息");
+                            builder.setMessage("确认删除这本书吗");
+                            builder.setPositiveButton("确定", new android.content.DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    //TODO: 2018/6/19
+                                    int res = dao.deleteBook(bundle.getString("id"));
+                                    Toast.makeText(BookDetailsActivity.this,"删除完成",Toast.LENGTH_SHORT).show();
+                                    setResult(0);
+                                    finish();
+                                }
+                            });
+                            builder.setNegativeButton("取消", new android.content.DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    setResult(1);
+                                }
+                            });
+                            builder.show();
+                        }
+                        break;
+                    case R.id.pingjia:
+                        View view = getLayoutInflater().inflate(R.layout.activity_edit_evaluation, null);
+                        final EditText editText = view.findViewById(R.id.editText);
+                        AlertDialog dialog = new AlertDialog.Builder(BookDetailsActivity.this)
+                                .setTitle("请输入评价内容")
+                                .setView(view)
+                                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        String content = editText.getText().toString();
+                                        String id = getIntent().getStringExtra("id");
+                                        BookDAO dao = new BookDAO(BookDetailsActivity.this);
+                                        dao.editBook(id,content);
+                                        pingjia.setVisibility(View.VISIBLE);
+                                        pingjia.setText(String.format("您的评价：%s",content));
+                                        Toast.makeText(BookDetailsActivity.this,"评价成功",Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                }).create();
+                        dialog.show();
+                        break;
+                    default:
+                        View view1 = getLayoutInflater().inflate(R.layout.activity_edit_evaluation, null);
+                        final EditText borrowOutText = view1.findViewById(R.id.editText);
+                        borrowOutText.setHint("用户名");
+                        AlertDialog alertDialog = new AlertDialog.Builder(BookDetailsActivity.this)
+                                .setTitle("请输入出借对象")
+                                .setView(view1)
+                                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        String content = borrowOutText.getText().toString();
+                                        String id = getIntent().getStringExtra("id");
+                                        BookDAO dao = new BookDAO(BookDetailsActivity.this);
+                                        dao.updateBook(id,content);
+                                        Toast.makeText(BookDetailsActivity.this,"出借完成",Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                }).create();
+                        alertDialog.show();
+                        break;
+                }
+                return true;
             }
         });
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (resultCode){
-            case 0:pingjia.setVisibility(View.VISIBLE);
-            BookDAO dao = new BookDAO(BookDetailsActivity.this);
-            String sql = "select * from books where _id='"+bundle.getString("id")+"'";
-                ArrayList<Book> arrayList = dao.queryBook(sql);
-                pingjia.setText(String.format("您的评价：%s",arrayList.get(0).getPingjia()));
-                break;
-        }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
     }
 
     /**

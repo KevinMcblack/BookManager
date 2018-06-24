@@ -63,4 +63,5 @@
     <string name="onlineSearch">在线搜索</string>
     <string name="wpingjia">撰写评价</string>
     <string name="pleaseEvaluation">请输入对此书的个人评价</string>
+    <string name="borrowOut">出借</string>
 </resources>

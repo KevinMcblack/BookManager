@@ -31,9 +31,9 @@ public class BookDAO{
 
     public int addBook(Book book) {
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String sql="insert into books values(?,?,?,?,?,?,?,?)";
+        String sql="insert into books values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         db.execSQL(sql,new String[]{book.getId(),book.getTitle(),book.getWriter(),
-                book.getPublishOrg(),book.getUrl(),String.valueOf(book.getType()),String.valueOf(book.getUserId()),book.getBookUrl()});
+                book.getPublishOrg(),book.getUrl(),String.valueOf(book.getType()),String.valueOf(book.getUserId()),book.getBookUrl(),book.getTag(),book.getPingjia(),book.getStatus(),book.getToid()});
         return 0;
     }
     public Cursor queryBook2(String sql){
@@ -74,8 +74,10 @@ public class BookDAO{
         Cursor cursor = sdb.rawQuery("select * from books where userid='"+userId+"'", null);
         return cursor;
     }
-    public void updateBook() {
-        // TODO: 2018/6/19  
+    public void updateBook(String id,String content) {
+        final SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String sql="update books set toId=?,status='外借中' where _id=?";
+        db.execSQL(sql,new String[]{content,id});
     }
     public void editBook(String id,String content){
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
