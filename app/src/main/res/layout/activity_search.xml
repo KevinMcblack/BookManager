@@ -5,10 +5,198 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.verge.bookmanager.SearchActivity"
-    android:background="@drawable/blue">
+    android:background="@drawable/blue"
+    android:orientation="vertical">
     <SearchView
         android:id="@+id/searchView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:queryHint="搜索图书名称" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="您还可以点击下方的按钮进行分类查找"
+        android:textSize="20sp"/>
+    <TableLayout
+        android:layout_width="wrap_content"
+    
+        android:layout_height="match_parent"
+        android:paddingTop="40dp">
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:typeface="sans"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:text="历史架空"
+                android:textSize="18.5sp" />
+
+            <Button
+                android:id="@+id/button2"
+                android:typeface="sans"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="中国历史"
+                android:textSize="18.5sp" />
+
+            <Button
+                android:id="@+id/button3"
+                android:typeface="sans"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="宗教哲学"
+                android:textSize="18.5sp" />
+
+            <Button
+                android:id="@+id/button4"
+                android:typeface="sans"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="人际处事"
+                android:textSize="18.5sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_weight="0"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:id="@+id/button5"
+                android:textSize="18.5sp"
+                android:typeface="sans"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="运动健身" />
+
+            <Button
+                android:id="@+id/button6"
+                android:textSize="18.5sp"
+                android:typeface="sans"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="励志" />
+
+            <Button
+                android:id="@+id/button7"
+                android:textSize="18.5sp"
+                android:typeface="sans"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="心灵修养" />
+
+            <Button
+                android:id="@+id/button8"
+                android:textSize="18.5sp"
+                android:typeface="sans"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="散文笔记" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_weight="0"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:id="@+id/button9"
+                android:textSize="18.5sp"
+                android:typeface="sans"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="武侠仙侠" />
+
+            <Button
+                android:id="@+id/button10"
+                android:textSize="18.5sp"
+                android:typeface="sans"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="影视文字" />
+
+            <Button
+                android:textSize="18.5sp"
+                android:id="@+id/button11"
+                android:typeface="sans"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="纪实文学" />
+
+            <Button
+                android:id="@+id/button12"
+                android:textSize="18.5sp"
+                android:typeface="sans"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="IT人文" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_weight="0"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:id="@+id/button13"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:typeface="sans"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:textSize="18.5sp"
+                android:text="社会学" />
+
+            <Button
+                android:id="@+id/button14"
+                android:layout_width="wrap_content"
+                android:textSize="18.5sp"
+                android:typeface="sans"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_height="match_parent"
+                android:text="军事法律" />
+
+            <Button
+                android:id="@+id/button15"
+                android:textSize="18.5sp"
+                android:typeface="sans"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="网络与通信" />
+
+            <Button
+                android:id="@+id/button16"
+                android:textSize="18.5sp"
+                android:typeface="sans"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="古色古香" />
+
+        </TableRow>
+
+    </TableLayout>
 </LinearLayout>

@@ -2,8 +2,11 @@ package com.example.verge.bookmanager;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +29,12 @@ public class Book_details extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_details);
+        Paint mp = new Paint();
+        mp.setFakeBoldText(true); //true为粗体，false为非粗体
+        mp.setTextSkewX(-0.5f); //float类型参数，负数表示右斜，整数左斜
+        mp.setUnderlineText(true); //true为下划线，false为非下划线
+        mp.setStrikeThruText(true); //true为删除线，false为非删除线
+
         textView1=findViewById(R.id.textview1);
         textView2=findViewById(R.id.textview2);
         textView3=findViewById(R.id.textview3);
@@ -44,7 +53,8 @@ public class Book_details extends AppCompatActivity {
         final String publishOrg=intent.getStringExtra("publishOrg");
         final String photo = intent.getStringExtra("photo");
         Log.i(title, "onCreate: ---------------------------------");
-        textView1.setText("书名："+title);
+        textView1.setText(Html.fromHtml("书名："+title));
+      /*  textView1.setText("书名："+title);*/
         textView2.setText("作者："+writers);
         textView3.setText("标签："+tags);
         textView4.setText("价格："+price);
