@@ -17,13 +17,11 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".TitleActivity" />
         <activity android:name=".Register" />
-        <activity android:name=".BookStore" />
-        <activity android:name=".Search" />
-        <activity android:name=".Book_Api" />
-        <activity android:name=".Search_result" />
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".Search_resultActivity" />
         <activity android:name=".Book_details" />
         <activity android:name=".BookDetailsActivity" />
-        <activity android:name=".Book_ToWeb" />
+        <activity android:name=".BookToWebActivity" />
         <activity android:name=".Welcome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +29,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EditUserActivity"></activity>
+        <activity android:name=".EditUserActivity" />
     </application>
 
 </manifest>

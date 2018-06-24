@@ -3,7 +3,6 @@ package com.example.verge.bookmanager;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -40,7 +39,7 @@ public class TitleActivity extends Activity implements View.OnClickListener {
         mForwardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TitleActivity.this, Search.class);
+                Intent intent = new Intent(TitleActivity.this, SearchActivity.class);
                 startActivity(intent);
             }
         });

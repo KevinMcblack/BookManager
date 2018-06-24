@@ -5,7 +5,8 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditUserActivity">
+    tools:context=".EditUserActivity"
+    android:background="@drawable/blue">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -37,12 +38,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <TextView
+                        android:textSize="18sp"
                         android:id="@+id/username"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/username" />
 
                     <TextView
+                        android:textSize="18sp"
                         android:id="@+id/usernameText"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -54,12 +57,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <TextView
+                        android:textSize="18sp"
                         android:id="@+id/newPassword"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/newPassword" />
                     <EditText
+                        android:textSize="18sp"
                         android:id="@+id/newPasswordEdit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -73,6 +78,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
                     <TextView
+                        android:textSize="18sp"
                         android:id="@+id/repeatPassword"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -80,6 +86,7 @@
                         android:text="@string/repeatPassword" />
 
                     <EditText
+                        android:textSize="18sp"
                         android:id="@+id/repeatPasswordEdit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -92,6 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
                     <TextView
+                        android:textSize="18sp"
                         android:id="@+id/sex"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -105,12 +113,14 @@
                         android:layout_weight="1">
 
                     <RadioButton
+                        android:textSize="18sp"
                         android:id="@+id/male"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/male" />
 
                     <RadioButton
+                        android:textSize="18sp"
                         android:id="@+id/female"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -121,6 +131,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <TextView
+                        android:textSize="18sp"
                         android:id="@+id/phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -128,6 +139,7 @@
                         android:text="@string/phone" />
 
                     <EditText
+                        android:textSize="18sp"
                         android:id="@+id/phoneEdit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -139,6 +151,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <TextView
+                        android:textSize="18sp"
                         android:id="@+id/area"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -146,6 +159,7 @@
                         android:text="@string/area" />
 
                     <EditText
+                        android:textSize="18sp"
                         android:id="@+id/areaEdit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -155,11 +169,15 @@
                         android:text="" />
                 </TableRow>
                 <TableRow>
+
                     <Button
                         android:id="@+id/submit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/submitChange" />
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/submitChange"
+                        android:textSize="18sp" />
                 </TableRow>
             </TableLayout>
         </LinearLayout>

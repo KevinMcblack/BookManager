@@ -5,14 +5,14 @@
     android:layout_height="58dp"
     android:background="#ed4255">
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/backward"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_centerVertical="true"
         android:layout_marginStart="10dp"
         android:background="#ed4255"
-        android:src="@drawable/arrow" />
+        android:src="@drawable/arrow" />-->
 
     <TextView
         android:id="@+id/text_title"

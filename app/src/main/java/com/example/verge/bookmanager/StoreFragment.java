@@ -1,9 +1,9 @@
 package com.example.verge.bookmanager;
 
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
@@ -13,11 +13,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
-import static com.example.verge.bookmanager.BookStore.eatFoodyImages;
-
 //精选
 public class StoreFragment extends Fragment {
-    public static String[] details = {"《三国演义》描写的是从东汉末年到西晋初年之间近一百年的历史风云。全书反映了三国时代的政治军事斗争，反映了三国时代各类社会矛盾的渗透与转化，概括了这一时代的历史巨变，塑造了一批咤叱风云的英雄人物。在对三国历史的把握上，作者表现出明显的拥刘反曹倾向，以刘备集团作为描写的中心，对刘备集团的主要人物加以歌颂，对曹操则极力揭露鞭挞。今天我们对于作者的这种拥刘反曹的倾向应有辩证的认识，尊刘反曹是民间传说的主要倾向，在罗贯中时代隐含着人民对汉族复兴的希望。",
+    public static String[] details = {
+            "《三国演义》描写的是从东汉末年到西晋初年之间近一百年的历史风云。全书反映了三国时代的政治军事斗争，反映了三国时代各类社会矛盾的渗透与转化，概括了这一时代的历史巨变，塑造了一批咤叱风云的英雄人物。在对三国历史的把握上，作者表现出明显的拥刘反曹倾向，以刘备集团作为描写的中心，对刘备集团的主要人物加以歌颂，对曹操则极力揭露鞭挞。今天我们对于作者的这种拥刘反曹的倾向应有辩证的认识，尊刘反曹是民间传说的主要倾向，在罗贯中时代隐含着人民对汉族复兴的希望。",
             "《图说天下：三国演义》描写了魏、蜀、吴三国的兴亡史。故事起自汉末黄中起义，终于西晋统一。在镇压农民起义的过程中，各路军阀拥兵自立，互相混战；曹操“挟天子以令诸侯”，削平北方，进军南方，此后，三国互相争战各有胜负，最后归于西晋。",
             "本书描写了从东汉末年到西晋初年之间近105年的历史风云，以描写战争为主，反映了东汉末年的群雄割据混战和魏、蜀、吴三国之间的政治和军事斗争，反映了三国时代各类社会斗争与矛盾的转化，概括了这一时代的历史巨变，塑造了一批叱咤风云的三国英雄人物，在广阔的背景上，上演了一幕幕气势磅礴的战争场面。",
             "全书反映了三国时代错综复杂的政治军事斗争，概括了这一时代的历史风云，塑造了曹操、刘备、孙权、诸葛亮等一批英雄人物。本书描写了大大小小的战争，构思宏伟，手法巧妙。其中官渡之战、赤壁之战等战争的描写波澜壮阔，读来惊心动魄、荡气回肠、爱不释手。",
@@ -121,8 +120,6 @@ public class StoreFragment extends Fragment {
                 startActivity(intent);//启动Activity
             }
         });
-
-        gridView.setAdapter(new ImageListAdapter(getContext(), eatFoodyImages));
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

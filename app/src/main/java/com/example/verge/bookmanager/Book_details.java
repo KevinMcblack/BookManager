@@ -53,7 +53,7 @@ public class Book_details extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String url = book_url;
-                Intent intent = new Intent(Book_details.this,Book_ToWeb.class);
+                Intent intent = new Intent(Book_details.this,BookToWebActivity.class);
                 intent.putExtra("url",url);
                 startActivity(intent);
             }

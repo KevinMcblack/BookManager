@@ -1,6 +1,10 @@
 package com.example.verge.bookmanager;
 
+import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,7 +30,7 @@ public class Login extends AppCompatActivity {
 	TextView register;
 	Button login;
 	private ImageView head_imageview;
-
+	private MyReceiver receiver;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,8 +42,19 @@ public class Login extends AppCompatActivity {
 			window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 			window.setStatusBarColor(getResources().getColor(R.color.ui_head));
 		}
-	}
 
+	}
+	//自定义广播接收器
+	class MyReceiver extends BroadcastReceiver {
+
+		@SuppressLint("WrongConstant")
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			//自定义广播接收器接收到广播后执行的操作
+			String key = intent.getStringExtra("key");
+			Toast.makeText(getApplicationContext(), "欢迎来到图书管理系统:"+key, 1).show();
+		}
+	}
 	private void findViews() {
 		username =  findViewById(R.id.username_edit);
 		password =  findViewById(R.id.passwd_edit);
@@ -54,9 +69,18 @@ public class Login extends AppCompatActivity {
 				UserDAO uService = new UserDAO(Login.this);
 				int flag = uService.login(name, pass);
 				if (flag!=-1) {
-					Toast.makeText(Login.this, "登录成功", Toast.LENGTH_SHORT)
-							.show();
-					Intent intent = new Intent(Login.this, MainActivity.class);
+					//实例化自定义广播接收器对象
+					receiver = new MyReceiver();
+					//动态注册广播接收器
+					registerReceiver(receiver, new IntentFilter("com.xqx.mybrodcast"));
+
+					//发送广播
+					Intent intent = new Intent("com.xqx.mybrodcast");
+					intent.putExtra("key", name+"用户");
+					sendBroadcast(intent);
+					/*Toast.makeText(Login.this, "登录成功", Toast.LENGTH_SHORT)
+							.show();*/
+					intent = new Intent(Login.this, MainActivity.class);
 					((BaseApplication)getApplication()).setUserId(flag);
 					((BaseApplication)getApplication()).setPassword(pass);
 					startActivity(intent);
@@ -109,6 +133,7 @@ public class Login extends AppCompatActivity {
 		return false;
 	}
 
+	@SuppressLint("HandlerLeak")
 	private Handler handler = new Handler() {
 
 		@Override

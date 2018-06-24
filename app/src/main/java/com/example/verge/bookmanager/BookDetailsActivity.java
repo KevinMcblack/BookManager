@@ -3,8 +3,6 @@ package com.example.verge.bookmanager;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -88,7 +86,7 @@ public class BookDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String url = arrayList.get(0).getBookUrl();
-                Intent intent = new Intent(BookDetailsActivity.this,Book_ToWeb.class);
+                Intent intent = new Intent(BookDetailsActivity.this,BookToWebActivity.class);
                 intent.putExtra("url",url);
                 startActivity(intent);
             }

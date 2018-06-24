@@ -4,33 +4,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.verge.bookmanager.Book_details"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/blue"
+    >
 
     <TextView
         android:id="@+id/textview1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10sp" />
+        android:padding="10sp"
+        android:textSize="15sp"/>
     <TextView
         android:id="@+id/textview2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10sp" />
+        android:padding="10sp"
+        android:textSize="15sp"/>
     <TextView
         android:id="@+id/textview3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10sp" />
+        android:padding="10sp"
+        android:textSize="15sp"/>
     <TextView
         android:id="@+id/textview4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10sp" />
+        android:padding="10sp"
+        android:textSize="15sp"/>
     <TextView
         android:id="@+id/textview5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20sp" />
+        android:padding="20sp"
+        android:textSize="15sp"/>
     <Button
         android:gravity="center"
         android:layout_gravity="center"
@@ -39,12 +46,14 @@
         android:layout_height="wrap_content"
         android:padding="10sp"
         android:text="@string/readOnline"
-        android:autoLink="web" />
+        android:autoLink="web"
+        android:textSize="16sp"/>
     <Button
         android:gravity="center"
         android:layout_gravity="center"
         android:id="@+id/addToShelf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/addToBookShelf"/>
+        android:text="@string/addToBookShelf"
+        android:textSize="16sp"/>
 </LinearLayout>

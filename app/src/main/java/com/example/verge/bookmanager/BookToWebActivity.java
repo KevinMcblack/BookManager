@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-public class Book_ToWeb extends AppCompatActivity {
+public class BookToWebActivity extends AppCompatActivity {
     WebView webView;
 
     @SuppressLint("SetJavaScriptEnabled")

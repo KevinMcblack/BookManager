@@ -19,9 +19,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
 
-import DAO.Test1;
-
-public class Search extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity {
     SearchView searchView = null;
 
     @Override
@@ -64,15 +62,15 @@ public class Search extends AppCompatActivity {
                 /*url += "&pageToken=1";//第几页*/
                 /*url += "&catid=7_11014";//查询书籍或者查询分类*/
                 String url;
-                String[] photo = new String[100];
-                String[] details = new String[100];
-                String[] writers = new String[100];
-                String[] publishOrg = new String[100];
-                String[] id = new String[100];
-                String[] book_url = new String[100];
-                String[] title = new String[100];
-                String[] price = new String[100];
-                String[] tags = new String[100];
+                String[] photo = new String[20];
+                String[] details = new String[20];
+                String[] writers = new String[20];
+                String[] publishOrg = new String[20];
+                String[] id = new String[20];
+                String[] book_url = new String[20];
+                String[] title = new String[20];
+                String[] price = new String[20];
+                String[] tags = new String[20];
                 for (int j = 0; j < 2; j++) {
                     JSONObject json = null;
                     url = "http://api01.bitspaceman.com:8000/book/baiduread";
@@ -122,8 +120,8 @@ public class Search extends AppCompatActivity {
                 b.putStringArray("publishOrg",publishOrg);
                 intent.putExtras(b);
 
-                intent.setClass(Search.this, Search_result.class);
-                Search.this.startActivity(intent);
+                intent.setClass(SearchActivity.this, Search_resultActivity.class);
+                SearchActivity.this.startActivity(intent);
                 return false;
             }
 
