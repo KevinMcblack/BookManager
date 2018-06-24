@@ -3,6 +3,7 @@ package com.example.verge.bookmanager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -77,6 +78,9 @@ public class EditUserActivity extends AppCompatActivity {
                                 user1.setPassword(password);
                                 userDAO.update(user1);
                                 Toast.makeText(EditUserActivity.this,"更新完成",Toast.LENGTH_SHORT).show();
+                                EditUserActivity.this.setResult(1);
+                                Log.i("修改完成","start finish----------");
+                                EditUserActivity.this.finish();
                             } else{
                                 DialogDemo.builder(EditUserActivity.this,"错误信息","密码不一致");
                             }
@@ -85,6 +89,9 @@ public class EditUserActivity extends AppCompatActivity {
                             user1.setPassword(password);
                             userDAO.update(user1);
                             Toast.makeText(EditUserActivity.this,"更新完成",Toast.LENGTH_SHORT).show();
+                            EditUserActivity.this.setResult(1);
+                            Log.i("修改完成","start finish----------");
+                            EditUserActivity.this.finish();
                         }
                     } else {
                         DialogDemo.builder(EditUserActivity.this,"错误信息","电话号码不能为空");

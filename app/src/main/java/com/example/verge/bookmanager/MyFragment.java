@@ -20,6 +20,7 @@ public class MyFragment extends Fragment {
     TextView area;
     TextView sex;
     Button editInfo;
+    User user;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View myLayout = inflater.inflate(R.layout.layout_my_frame,container,false);
@@ -29,15 +30,7 @@ public class MyFragment extends Fragment {
         area = myLayout.findViewById(R.id.area);
         sex = myLayout.findViewById(R.id.sex);
         editInfo = myLayout.findViewById(R.id.editInfo);
-        UserDAO dao = new UserDAO(getContext());
-        final User user = dao.queryUser(((BaseApplication)getActivity().getApplication()).getUserId());
-        if(user!=null){
-            name.setText(user.getUsername() );
-            userId.setText(String.format("%s%s", userId.getText(), String.valueOf(user.getId())));
-            phone.setText(String.format("%s%s", phone.getText(), user.getPhone()));
-            area.setText(String.format("%s%s", area.getText(), user.getArea()));
-            sex.setText(String.format("%s%s", sex.getText(), user.getSex()));
-        }
+        initInfo();
         editInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,9 +38,34 @@ public class MyFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("user",user);
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivityForResult(intent,0);
             }
         });
         return myLayout;
+    }
+    public void initInfo(){
+        UserDAO dao = new UserDAO(getContext());
+        user = dao.queryUser(((BaseApplication)getActivity().getApplication()).getUserId());
+        if(user!=null){
+            name.setText(user.getUsername() );
+            userId.setText(String.format("%s%s", userId.getText(), String.valueOf(user.getId())));
+            phone.setText(String.format("%s%s", phone.getText(), user.getPhone()));
+            area.setText(String.format("%s%s", area.getText(), user.getArea()));
+            sex.setText(String.format("%s%s", sex.getText(), user.getSex()));
+        }
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode){
+            case 0:
+                userId.setText("会员编号：");
+                phone.setText("电话号码");
+                area.setText("地区：");
+                sex.setText("性别：");
+                initInfo();
+                break;
+                default:
+                    break;
+        }
     }
 }
