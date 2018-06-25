@@ -55,30 +55,10 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         searchView = findViewById(R.id.searchView);
-        /**
-         * 默认情况下, search widget是"iconified“的，只是用一个图标 来表示它(一个放大镜),
-         * 当用户按下它的时候才显示search box . 你可以调用setIconifiedByDefault(false)让search
-         * box默认都被显示。 你也可以调用setIconified()让它以iconified“的形式显示。
-         */
         searchView.setIconifiedByDefault(true);
-        /**
-         * 默认情况下是没提交搜索的按钮，所以用户必须在键盘上按下"enter"键来提交搜索.你可以同过setSubmitButtonEnabled(
-         * true)来添加一个提交按钮（"submit" button)
-         * 设置true后，右边会出现一个箭头按钮。如果用户没有输入，就不会触发提交（submit）事件
-         */
         searchView.setSubmitButtonEnabled(true);
-        /**
-         * 初始是否已经是展开的状态
-         * 写上此句后searchView初始展开的，也就是是可以点击输入的状态，如果不写，那么就需要点击下放大镜，才能展开出现输入框
-         */
         searchView.onActionViewExpanded();
-        // 设置search view的背景色
         searchView.setBackgroundColor(0x22ff00ff);
-        /**
-         * 默认情况下, search widget是"iconified“的，只是用一个图标 来表示它(一个放大镜),
-         * 当用户按下它的时候才显示search box . 你可以调用setIconifiedByDefault(false)让search
-         * box默认都被显示。 你也可以调用setIconified()让它以iconified“的形式显示。
-         */
         searchView.setIconifiedByDefault(true);
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
@@ -198,6 +178,7 @@ public class SearchActivity extends AppCompatActivity {
             // 当点击搜索按钮时触发该方法
             @Override
             public boolean onQueryTextSubmit(String query) {
+                Log.i(query, "classify:这是搜索查找——————————————————————————————————————");
                 Log.i(query, "onQueryTextSubmit: ----------------------------");
                 //书名模糊查询
                 /*url += "&pageToken=1";//第几页*/
@@ -230,12 +211,9 @@ public class SearchActivity extends AppCompatActivity {
                             tags[i + j * 10] = jUser.getString("tags");
                             id[i + j * 10] = jUser.getString("id");
                         }
-
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
-
                 }
                 //打开另一个Activity,一个Intent对象代表一个意图
                 Intent intent = new Intent();
@@ -250,9 +228,8 @@ public class SearchActivity extends AppCompatActivity {
                 b.putStringArray("id", id);
                 b.putStringArray("publishOrg", publishOrg);
                 intent.putExtras(b);
-
                 intent.setClass(SearchActivity.this, Search_resultActivity.class);
-                SearchActivity.this.startActivity(intent);
+                startActivity(intent);
                 return false;
             }
 
@@ -266,15 +243,10 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public void classify(String name) {
-
-        //书名模糊查询
-                /*url += "&pageToken=1";//第几页*/
-
         for (int j = 0; j < 2; j++) {
             JSONObject json = null;
             url = "http://api01.bitspaceman.com:8000/book/baiduread";
             url += "?apikey=eVQVoieFyQYmFgy2EErjfz3Hj5zs7cV5huRh9IF32cmNgMcy68xEsymLeGeIj41y";
-           /* url += "&kw=" + query;*/
             url += "&catid=" + name;//查询书籍或者查询分类
             url += "&pageToken=" + j + 1;
             Log.i(url, "onQueryTextSubmit: -----------------------");
@@ -303,22 +275,24 @@ public class SearchActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            //打开另一个Activity,一个Intent对象代表一个意图
-            Intent intent = new Intent();
-            Bundle b = new Bundle();
-            b.putStringArray("photo", photo);
-            b.putStringArray("details", details);
-            b.putStringArray("writers", writers);
-            b.putStringArray("book_url", book_url);
-            b.putStringArray("title", title);
-            b.putStringArray("price", price);
-            b.putStringArray("tags", tags);
-            b.putStringArray("id", id);
-            b.putStringArray("publishOrg", publishOrg);
-            intent.putExtras(b);
-            intent.setClass(SearchActivity.this, Search_resultActivity.class);
-            SearchActivity.this.startActivity(intent);
+
         }
+        //打开另一个Activity,一个Intent对象代表一个意图
+        Intent intent = new Intent();
+        Bundle b = new Bundle();
+        b.putStringArray("photo", photo);
+        b.putStringArray("details", details);
+        b.putStringArray("writers", writers);
+        b.putStringArray("book_url", book_url);
+        b.putStringArray("title", title);
+        b.putStringArray("price", price);
+        b.putStringArray("tags", tags);
+        b.putStringArray("id", id);
+        b.putStringArray("publishOrg", publishOrg);
+        intent.putExtras(b);
+        intent.setClass(SearchActivity.this, Search_resultActivity.class);
+        startActivity(intent);
+        Log.i(name, "classify:这是分类查找——————————————————————————————————————");
     }
 
     public static JSONObject getRequestFromUrl(String url) throws IOException, JSONException {

@@ -31,12 +31,7 @@ public class MyFragment extends Fragment {
         sex = myLayout.findViewById(R.id.sex);
         editInfo = myLayout.findViewById(R.id.editInfo);
         initInfo();
-        myLayout.findViewById(R.id.weather).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
         editInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

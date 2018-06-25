@@ -3,57 +3,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.verge.bookmanager.Book_details"
     android:orientation="vertical"
-    android:background="@drawable/blue"
-    >
-
+    android:background="#ffffff">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="图书详情" />
     <TextView
         android:id="@+id/textview1"
+        android:gravity="center"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10sp"
-        android:textSize="15sp"/>
+        android:textSize="16sp"/>
     <TextView
         android:id="@+id/textview2"
+        android:gravity="center"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10sp"
-        android:textSize="15sp"/>
+        android:textSize="16sp"/>
     <TextView
         android:id="@+id/textview3"
+        android:gravity="center"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10sp"
-        android:textSize="15sp"/>
+        android:textSize="16sp"/>
     <TextView
         android:id="@+id/textview4"
+        android:gravity="center"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10sp"
-        android:textSize="15sp"/>
+        android:textSize="16sp"/>
     <TextView
         android:id="@+id/textview5"
+        android:gravity="center"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20sp"
-        android:textSize="15sp"/>
-    <Button
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:id="@+id/textview6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10sp"
-        android:text="@string/readOnline"
-        android:autoLink="web"
-        android:textSize="16sp"/>
-    <Button
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:id="@+id/addToShelf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/addToBookShelf"
         android:textSize="16sp"/>
 </LinearLayout>
