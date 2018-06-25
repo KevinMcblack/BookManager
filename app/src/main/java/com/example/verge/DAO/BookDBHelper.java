@@ -14,7 +14,7 @@ public class BookDBHelper extends SQLiteOpenHelper {
     private static int version = 1;
     public static String TABLE_NAME = "books";
 
-    BookDBHelper(Context context) {
+    public BookDBHelper(Context context) {
         super(context, name, null, version);
     }
 

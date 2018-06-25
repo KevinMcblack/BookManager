@@ -75,4 +75,12 @@ public class UserDAO {
 			return null;
 		}
 	}
+	public void deleteUser(String sql){
+		SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+		sqLiteDatabase.execSQL(sql);
+	}
+	public Cursor queryAllUser(String sql){
+		SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+		return  sqLiteDatabase.rawQuery(sql,null);
+	}
 }

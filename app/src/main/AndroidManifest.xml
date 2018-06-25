@@ -32,7 +32,9 @@
         <activity android:name=".EditUserActivity" />
         <activity android:name=".LocalSearch" />
         <activity android:name=".LoaclSearchResultActivity" />
-        <activity android:name=".EditEvaluationActivity"></activity>
+        <activity android:name=".AdminActivity" />
+        <activity android:name=".DeleteBooksListView" />
+        <activity android:name=".DeletePingjiaActivity"></activity>
     </application>
 
 </manifest>

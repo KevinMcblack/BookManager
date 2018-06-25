@@ -24,9 +24,9 @@
         android:layout_gravity="center">
 
         <LinearLayout
-            android:background="#ffffff"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/text_view_boder"
             android:orientation="vertical"
             android:layout_gravity="center">
 
@@ -180,15 +180,16 @@
 
                 </TableRow>
                 <Button
-                    android:typeface="sans"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:id="@+id/submit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/submit"
+                    android:typeface="sans"
+                    style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_gravity="center"
                     android:gravity="center"
+                    android:textSize="18sp"
                     android:text="@string/submitChange"
-                    android:textSize="18sp" />
+                     />
             </TableLayout>
         </LinearLayout>
     </LinearLayout>
