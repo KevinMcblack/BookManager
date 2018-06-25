@@ -9,13 +9,13 @@
     android:orientation="vertical">
     <SearchView
         android:id="@+id/searchView"
-        android:background="@drawable/text_view_boder"
+        android:background="@drawable/seach_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:queryHint="搜索图书名称" />
 
     <TextView
-        android:background="@drawable/text_view_boder"
+        android:background="@android:color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -26,9 +26,9 @@
     <TableLayout
         android:gravity="center"
         android:layout_gravity="center"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:background="@drawable/text_view_boder"
+        android:background="@drawable/seacher_down"
         >
 
         <TableRow
@@ -40,37 +40,41 @@
                 android:id="@+id/button1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:typeface="sans"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:text="历史架空"
-                android:textSize="18.5sp" />
+                android:textSize="15sp" />
 
             <Button
                 android:id="@+id/button2"
                 android:typeface="sans"
+                android:layout_weight="1"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="中国历史"
-                android:textSize="18.5sp" />
+                android:textSize="15sp" />
 
             <Button
                 android:id="@+id/button3"
                 android:typeface="sans"
+                android:layout_weight="1"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="宗教哲学"
-                android:textSize="18.5sp" />
+                android:textSize="15sp" />
 
             <Button
                 android:id="@+id/button4"
                 android:typeface="sans"
+                android:layout_weight="1"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="人际处事"
-                android:textSize="18.5sp" />
+                android:textSize="15sp" />
 
         </TableRow>
 
@@ -82,8 +86,9 @@
 
             <Button
                 android:id="@+id/button5"
-                android:textSize="18.5sp"
+                android:textSize="15sp"
                 android:typeface="sans"
+                android:layout_weight="1"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -91,8 +96,9 @@
 
             <Button
                 android:id="@+id/button6"
-                android:textSize="18.5sp"
+                android:textSize="15sp"
                 android:typeface="sans"
+                android:layout_weight="1"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -100,8 +106,9 @@
 
             <Button
                 android:id="@+id/button7"
-                android:textSize="18.5sp"
+                android:textSize="15sp"
                 android:typeface="sans"
+                android:layout_weight="1"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -109,7 +116,8 @@
 
             <Button
                 android:id="@+id/button8"
-                android:textSize="18.5sp"
+                android:textSize="15sp"
+                android:layout_weight="1"
                 android:typeface="sans"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
@@ -126,8 +134,9 @@
 
             <Button
                 android:id="@+id/button9"
-                android:textSize="18.5sp"
+                android:textSize="15sp"
                 android:typeface="sans"
+                android:layout_weight="1"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -135,17 +144,19 @@
 
             <Button
                 android:id="@+id/button10"
-                android:textSize="18.5sp"
+                android:textSize="15sp"
                 android:typeface="sans"
+                android:layout_weight="1"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="影视文字" />
 
             <Button
-                android:textSize="18.5sp"
+                android:textSize="15sp"
                 android:id="@+id/button11"
                 android:typeface="sans"
+                android:layout_weight="1"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -153,8 +164,9 @@
 
             <Button
                 android:id="@+id/button12"
-                android:textSize="18.5sp"
+                android:textSize="15sp"
                 android:typeface="sans"
+                android:layout_weight="1"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -173,14 +185,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:typeface="sans"
+                android:layout_weight="1"
                 style="@style/Widget.AppCompat.Button.Colored"
-                android:textSize="18.5sp"
+                android:textSize="15sp"
                 android:text="社会学" />
 
             <Button
                 android:id="@+id/button14"
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
-                android:textSize="18.5sp"
+                android:textSize="15sp"
                 android:typeface="sans"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_height="match_parent"
@@ -188,7 +202,8 @@
 
             <Button
                 android:id="@+id/button15"
-                android:textSize="18.5sp"
+                android:textSize="15sp"
+                android:layout_weight="1"
                 android:typeface="sans"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
@@ -197,8 +212,9 @@
 
             <Button
                 android:id="@+id/button16"
-                android:textSize="18.5sp"
+                android:textSize="15sp"
                 android:typeface="sans"
+                android:layout_weight="1"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/timg"
+
     >
 
     <!--<include layout="@layout/layout_title"
@@ -20,18 +20,19 @@
         <FrameLayout
             android:id="@+id/content"
             android:layout_width="match_parent"
+            android:background="@drawable/background"
             android:layout_height="0dp"
+
             android:layout_weight="1">
-
-
         </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="5sp"
-            android:layout_marginBottom="5sp">
+            android:background="#ffffff"
+            android:paddingBottom="5dp"
+            android:layout_marginTop="5sp">
             <!--消息-->
             <LinearLayout
                 android:id="@+id/bookShelfLayout"

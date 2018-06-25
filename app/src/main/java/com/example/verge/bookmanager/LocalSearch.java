@@ -3,6 +3,7 @@ package com.example.verge.bookmanager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.SearchView;
 
 import com.example.verge.DAO.BookDAO;
@@ -34,8 +35,7 @@ public class LocalSearch extends AppCompatActivity {
          * 写上此句后searchView初始展开的，也就是是可以点击输入的状态，如果不写，那么就需要点击下放大镜，才能展开出现输入框
          */
         searchView.onActionViewExpanded();
-        // 设置search view的背景色
-        searchView.setBackgroundColor(0x22ff00ff);
+
         /**
          * 默认情况下, search widget是"iconified“的，只是用一个图标 来表示它(一个放大镜),
          * 当用户按下它的时候才显示search box . 你可以调用setIconifiedByDefault(false)让search
@@ -59,8 +59,11 @@ public class LocalSearch extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 BookDAO dao = new BookDAO(LocalSearch.this);
-                String sql="select * from books where title like '%"+query+"%' or booktag like '%"+query+"%'";
+                int uid=((BaseApplication)getApplication()).getUserId();
+                String sql="select * from books where (title like '%"+query+"%' or booktag like '%"+query+"%' )and userid='"+uid+"'";
+                Log.i("userId",uid+"--------------------");
                 ArrayList<Book> arrayList = dao.queryBook(sql);
+                Log.i("arryList Size",arrayList.size()+"-----------------");
                 Intent intent = new Intent(LocalSearch.this,LoaclSearchResultActivity.class);
                 for(int i=0;i<arrayList.size();i++){
                     photo[i]=arrayList.get(i).getUrl();

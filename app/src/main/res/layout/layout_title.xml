@@ -3,7 +3,7 @@
     android:id="@+id/biaoti"
     android:layout_width="match_parent"
     android:layout_height="58dp"
-    android:background="#ed4255">
+    android:background="@color/action_bar_color">
 
     <!--<ImageView
         android:id="@+id/backward"
@@ -28,7 +28,7 @@
         android:layout_width="70dp"
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
-        android:background="#ed4255"
+        android:background="@color/action_bar_color"
         android:text="在线搜索"
         android:textColor="#ffffff"
         android:textSize="15sp" />

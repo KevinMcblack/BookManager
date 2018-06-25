@@ -35,7 +35,7 @@
             <TextView
                 style="@style/textviewStyle"
                 android:id="@+id/name"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="17dp"
                 android:text="昵称："
@@ -57,7 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/text_view_boder"
+        android:background="@drawable/seach_up"
         android:orientation="vertical">
         <!-- 电话号-->
         <TextView
@@ -84,29 +84,19 @@
         <TextView
             style="@style/textviewStyle"
             android:id="@+id/sex"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="17dp"
             android:text="@string/sex"
             android:textSize="17sp"
             android:layout_marginBottom="10dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_marginBottom="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/text_view_boder"
-        android:orientation="vertical"
-        android:paddingTop="17dp">
-    <Button
-        android:id="@+id/editInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-
-        android:text="@string/editUserInfo"
-        android:typeface="sans"
-        style="@style/Widget.AppCompat.Button.Colored"/>
-
+        <Button
+            android:id="@+id/editInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/editUserInfo"
+            android:typeface="sans"
+            style="@style/Widget.AppCompat.Button.Colored"/>
     </LinearLayout>
 </LinearLayout>
