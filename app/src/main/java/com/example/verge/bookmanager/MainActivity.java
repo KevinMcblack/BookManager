@@ -142,7 +142,7 @@ public class MainActivity extends TitleActivity {
                 } else {
                     transaction.show(storeFragment);
                 }
-                setTitle(R.string.store);
+                setTitle("精选");
                 break;
             case 2:
                 myIcon.setImageResource(R.drawable.my1);

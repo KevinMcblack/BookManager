@@ -74,6 +74,11 @@ public class BookDAO{
         Cursor cursor = sdb.rawQuery("select * from books where userid='"+userId+"'", null);
         return cursor;
     }
+    public void deletePingJia(String id,String content){
+        SQLiteDatabase sdb = dbHelper.getReadableDatabase();
+        String sql = "update books set pingjia='"+content+"' where _id='"+id+"'";
+        sdb.execSQL(sql);
+    }
     public void updateBook(String id,String content) {
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
         String sql="update books set toId=?,status='外借中' where _id=?";

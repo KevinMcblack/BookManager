@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.verge.bookmanager.Book_details"
     android:orientation="vertical"
-    android:background="#ffffff">
+    android:background="@drawable/text_view_boder">
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -20,6 +20,7 @@
         app:title="图书详情" />
     <TextView
         android:id="@+id/textview1"
+        style="@style/textviewStyle"
         android:gravity="center"
         android:layout_gravity="center"
         android:layout_width="match_parent"
@@ -27,6 +28,7 @@
         android:padding="10sp"
         android:textSize="16sp"/>
     <TextView
+        style="@style/textviewStyle"
         android:id="@+id/textview2"
         android:gravity="center"
         android:layout_gravity="center"
@@ -36,6 +38,7 @@
         android:textSize="16sp"/>
     <TextView
         android:id="@+id/textview3"
+        style="@style/textviewStyle"
         android:gravity="center"
         android:layout_gravity="center"
         android:layout_width="match_parent"
@@ -43,6 +46,7 @@
         android:padding="10sp"
         android:textSize="16sp"/>
     <TextView
+        style="@style/textviewStyle"
         android:id="@+id/textview4"
         android:gravity="center"
         android:layout_gravity="center"
@@ -51,6 +55,7 @@
         android:padding="10sp"
         android:textSize="16sp"/>
     <TextView
+        style="@style/textviewStyle"
         android:id="@+id/textview5"
         android:gravity="center"
         android:layout_gravity="center"

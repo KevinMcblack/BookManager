@@ -35,7 +35,11 @@ public class UserDAO {
 		sdb.execSQL(sql, obj);
 		return true;
 	}
-
+	public void deleteUser(int id){
+		SQLiteDatabase sdb = dbHelper.getReadableDatabase();
+		String sql="delete user where id='"+id+"'";
+		sdb.execSQL(sql);
+	}
 	// 添加用
 	public boolean add(String bookname, String author, String price) {
 		SQLiteDatabase sdb = dbHelper.getReadableDatabase();
