@@ -133,11 +133,12 @@ public class BookDetailsActivity extends AppCompatActivity {
                         dialog.show();
                         break;
                     case R.id.bringBack:
-                        if(status.equals("已出借")){
+                        if(status.equals("已外借")){
                             dao.updateBook(bundle.getString("id"));
                             Toast.makeText(BookDetailsActivity.this,"收回完成",Toast.LENGTH_SHORT).show();
+                            status="已添加";
                         } else {
-                            DialogDemo.builder(BookDetailsActivity.this,"错误信息","此书未出借，无序收回");
+                            DialogDemo.builder(BookDetailsActivity.this,"错误信息","此书未出借，无需收回");
                         }
                         break;
                     default:

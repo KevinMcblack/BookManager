@@ -52,6 +52,9 @@ public class LocalSearch extends AppCompatActivity {
         final String[] title = new String[20];
         String[] price = new String[20];
         final String[] tags = new String[20];
+        final String[] pingjia= new String[20];
+        final String[] status = new String[20];
+        final String[] toid = new String[20];
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -67,6 +70,9 @@ public class LocalSearch extends AppCompatActivity {
                     id[i]=arrayList.get(i).getId();
                     book_url[i]=arrayList.get(i).getBookUrl();
                     tags[i]=arrayList.get(i).getTag();
+                    pingjia[i]=arrayList.get(i).getPingjia();
+                    status[i]=arrayList.get(i).getStatus();
+                    toid[i]=arrayList.get(i).getToid();
                 }
                 Bundle b = new Bundle();
                 b.putStringArray("photo", photo);
@@ -76,6 +82,9 @@ public class LocalSearch extends AppCompatActivity {
                 b.putStringArray("tags", tags);
                 b.putStringArray("id",id);
                 b.putStringArray("publishOrg",publishOrg);
+                b.putStringArray("pingjia",pingjia);
+                b.putStringArray("status",status);
+                b.putStringArray("toid",toid);
                 intent.putExtras(b);
                 startActivity(intent);
                 return false;

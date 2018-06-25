@@ -20,6 +20,9 @@ public class LoaclSearchResultActivity extends AppCompatActivity {
     String [] tags = null;
     String [] idd = null;
     String [] publishOrg = null;
+    String[] pingjia=null;
+    String[] status=null;
+    String[] toid=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +37,9 @@ public class LoaclSearchResultActivity extends AppCompatActivity {
         price=b.getStringArray("price");
         tags=b.getStringArray("tags");
         idd=b.getStringArray("id");
+        pingjia=b.getStringArray("pingjia");
+        status=b.getStringArray("status");
+        toid=b.getStringArray("toid");
         publishOrg=b.getStringArray("publishOrg");
         final SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.fresh);
         GridView gridView = findViewById(R.id.grid_view);
@@ -54,13 +60,21 @@ public class LoaclSearchResultActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.i(String.valueOf(id), "onItemClick:----------------");
                 Intent intent = new Intent(LoaclSearchResultActivity.this, BookDetailsActivity.class);
-                intent.putExtra("url",photo[(int) id]);
-                intent.putExtra("title",title[(int) id]);
-                intent.putExtra("writer",writers[(int) id]);
-                intent.putExtra("bookurl",book_url[(int) id]);
-                //intent.putExtra("tags",tags[(int) id]);
-                intent.putExtra("publishOrg",publishOrg[(int) id]);
-                intent.putExtra("id",idd[(int) id]);
+                Bundle bundle = new Bundle();
+                bundle.putString("id",idd[(int) id]);
+                bundle.putString("title",title[(int) id]);
+                bundle.putString("writer",writers[(int) id]);
+                bundle.putString("type","book");
+                bundle.putString("publishOrg",publishOrg[(int) id]);
+                bundle.putString("url",photo[(int) id]);
+                bundle.putString("bookurl",book_url[(int) id]);
+                if (!pingjia[(int) id].equals("")){
+                    bundle.putString("pingjia",pingjia[(int) id]);
+                }
+                bundle.putString("status",status[(int) id]);
+                bundle.putString("toid",toid[(int) id]);
+                bundle.putString("tag",tags[(int) id]);
+                intent.putExtras(bundle);
                 startActivity(intent);//启动Activity
             }
         });
