@@ -10,4 +10,6 @@
         android:id="@+id/pingjia"/>
     <item android:title="@string/borrowOut"
         android:id="@+id/borrowOut"/>
+    <item android:title="@string/bringBack"
+        android:id="@+id/bringBack"/>
 </menu>

@@ -36,7 +36,7 @@
     <string name="text_back">返回</string>
     <string name="text_forward">在线搜索</string>
     <string name="bookImage">图书图片</string>
-    <string name="textViewDefault">null</string>
+    <string name="textViewDefault">测试测试测试测试</string>
     <string name="bookshelf">书架</string>
     <string name="store">书城</string>
     <string name="my">我的</string>
@@ -64,4 +64,5 @@
     <string name="wpingjia">撰写评价</string>
     <string name="pleaseEvaluation">请输入对此书的个人评价</string>
     <string name="borrowOut">出借</string>
+    <string name="bringBack">收回</string>
 </resources>

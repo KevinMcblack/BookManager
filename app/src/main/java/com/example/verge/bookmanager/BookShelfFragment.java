@@ -97,6 +97,7 @@ public class BookShelfFragment extends Fragment{
                 }
                 bundle.putString("status",arrayList.get(0).getStatus());
                 bundle.putString("toid",arrayList.get(0).getToid());
+                bundle.putString("tag",arrayList.get(0).getTag());
                 intent.putExtras(bundle);
                 startActivityForResult(intent,0);
             }

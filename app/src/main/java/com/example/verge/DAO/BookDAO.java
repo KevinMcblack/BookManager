@@ -79,6 +79,11 @@ public class BookDAO{
         String sql="update books set toId=?,status='外借中' where _id=?";
         db.execSQL(sql,new String[]{content,id});
     }
+    public void updateBook(String id) {
+        final SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String sql="update books set status='已添加' where _id=?";
+        db.execSQL(sql,new String[]{id});
+    }
     public void editBook(String id,String content){
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
         String sql="update books set pingjia=? where _id=?";

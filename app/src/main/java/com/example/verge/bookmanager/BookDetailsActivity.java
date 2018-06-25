@@ -36,9 +36,11 @@ public class BookDetailsActivity extends AppCompatActivity {
     TextView author;
     TextView bookType;
     TextView publishOrgName;
+    TextView tagText;
     TextView pingjia;
     Bundle bundle;
     Toolbar toolbar;
+    String status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,18 +51,20 @@ public class BookDetailsActivity extends AppCompatActivity {
         bookType = findViewById(R.id.bookType);
         publishOrgName = findViewById(R.id.publishOrgName);
         pingjia = findViewById(R.id.pingjia);
+        tagText = findViewById(R.id.tagName);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         final Intent intent = getIntent();
         bundle = intent.getExtras();
         assert bundle != null;
         final BookDAO dao = new BookDAO(this);
-
         ShowNetPicThread readImage = new ShowNetPicThread();
         readImage.run();
+        status=bundle.getString("status");
         bookName.setText(String.format("标题：%s", bundle.getString("title")));
         author.setText(String.format("作者：%s", bundle.getString("writer")));
         bookType.setText(String.format("类型：%s", bundle.getString("type")));
+        tagText.setText(String.format("标签：%s", bundle.getString("tag").replace("[","").replace("]","")));
         publishOrgName.setText(String.format("出版社：%s", bundle.getString("publishOrg")));
         if (bundle.getString("pingjia")!=null){
             pingjia.setVisibility(View.VISIBLE);
@@ -77,8 +81,6 @@ public class BookDetailsActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.remove :
-                        String status=bundle.getString("status");
-                        assert status != null;
                         if(status.equals("已外借")){
                             DialogDemo.builder(BookDetailsActivity.this,"错误信息","图书已外借不能删除");
                         } else{
@@ -130,6 +132,14 @@ public class BookDetailsActivity extends AppCompatActivity {
                                 }).create();
                         dialog.show();
                         break;
+                    case R.id.bringBack:
+                        if(status.equals("已出借")){
+                            dao.updateBook(bundle.getString("id"));
+                            Toast.makeText(BookDetailsActivity.this,"收回完成",Toast.LENGTH_SHORT).show();
+                        } else {
+                            DialogDemo.builder(BookDetailsActivity.this,"错误信息","此书未出借，无序收回");
+                        }
+                        break;
                     default:
                         View view1 = getLayoutInflater().inflate(R.layout.activity_edit_evaluation, null);
                         final EditText borrowOutText = view1.findViewById(R.id.editText);
@@ -154,6 +164,7 @@ public class BookDetailsActivity extends AppCompatActivity {
                                     }
                                 }).create();
                         alertDialog.show();
+                        status="已外借";
                         break;
                 }
                 return true;
