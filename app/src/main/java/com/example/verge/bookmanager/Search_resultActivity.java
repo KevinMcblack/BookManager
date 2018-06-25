@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,7 +21,7 @@ public class Search_resultActivity extends AppCompatActivity {
     String [] tags = null;
     String [] idd = null;
     String [] publishOrg = null;
-
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +37,8 @@ public class Search_resultActivity extends AppCompatActivity {
         tags=b.getStringArray("tags");
         idd=b.getStringArray("id");
         publishOrg=b.getStringArray("publishOrg");
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         final SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.fresh);
         GridView gridView = findViewById(R.id.grid_view);
         gridView.setAdapter(new ImageListAdapter(Search_resultActivity.this,photo));

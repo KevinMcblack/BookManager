@@ -9,23 +9,27 @@
     android:orientation="vertical">
     <SearchView
         android:id="@+id/searchView"
+        android:background="@drawable/text_view_boder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:queryHint="搜索图书名称" />
+
     <TextView
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
+        android:background="@drawable/text_view_boder"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:paddingTop="10dp"
         android:text="您还可以点击下方的按钮进行分类查找"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
     <TableLayout
         android:gravity="center"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="280dp"
-        android:paddingTop="30dp">
+        android:layout_height="250dp"
+        android:background="@drawable/text_view_boder"
+        >
 
         <TableRow
             android:id="@+id/tableRow1"

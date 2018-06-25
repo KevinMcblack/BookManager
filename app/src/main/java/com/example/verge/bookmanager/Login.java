@@ -66,38 +66,48 @@ public class Login extends AppCompatActivity {
 			public void onClick(View v) {
 				String name = username.getText().toString();
 				String pass = password.getText().toString();
-				UserDAO uService = new UserDAO(Login.this);
-				int flag = uService.login(name, pass);
-				if (flag!=-1) {
-					//实例化自定义广播接收器对象
-					receiver = new MyReceiver();
-					//动态注册广播接收器
-					registerReceiver(receiver, new IntentFilter("com.xqx.mybrodcast"));
-
-					//发送广播
+				if (name.equals("admin")&&pass.equals("123456")){
 					Intent intent = new Intent("com.xqx.mybrodcast");
-					intent.putExtra("key", name+"用户");
+					intent.putExtra("key", name+"管理员");
 					sendBroadcast(intent);
+					intent = new Intent(Login.this, AdminActivity.class);
+					startActivity(intent);
+					finish();
+				} else{
+					UserDAO uService = new UserDAO(Login.this);
+					int flag = uService.login(name, pass);
+					if (flag!=-1) {
+						//实例化自定义广播接收器对象
+						receiver = new MyReceiver();
+						//动态注册广播接收器
+						registerReceiver(receiver, new IntentFilter("com.xqx.mybrodcast"));
+
+						//发送广播
+						Intent intent = new Intent("com.xqx.mybrodcast");
+						intent.putExtra("key", name+"用户");
+						sendBroadcast(intent);
 					/*Toast.makeText(Login.this, "登录成功", Toast.LENGTH_SHORT)
 							.show();*/
-					intent = new Intent(Login.this, MainActivity.class);
-					((BaseApplication)getApplication()).setUserId(flag);
-					((BaseApplication)getApplication()).setPassword(pass);
-					startActivity(intent);
+						intent = new Intent(Login.this, MainActivity.class);
+						((BaseApplication)getApplication()).setUserId(flag);
+						((BaseApplication)getApplication()).setPassword(pass);
+						startActivity(intent);
 
-					// 判断用户名是否为空
-				} else if (name.equals("")) {
-					DialogDemo.builder(Login.this, "错误信息", "用户名不能为空！");
-					// 判断密码是否为空
-				} else if (pass.equals("")) {
-					DialogDemo.builder(Login.this, "错误信息", "密码不能为空！");
-				} // 判断用户名和密码是否正确
-				else if (!(name.equals(username) && pass.equals(password))) {
-					DialogDemo.builder(Login.this, "错误信息", "用户名或密码错误，请重新输入");
-				} else {
-					Toast.makeText(Login.this, "请注册后再登陆", Toast.LENGTH_SHORT)
-							.show();
+						// 判断用户名是否为空
+					} else if (name.equals("")) {
+						DialogDemo.builder(Login.this, "错误信息", "用户名不能为空！");
+						// 判断密码是否为空
+					} else if (pass.equals("")) {
+						DialogDemo.builder(Login.this, "错误信息", "密码不能为空！");
+					} // 判断用户名和密码是否正确
+					else if (!(name.equals(username) && pass.equals(password))) {
+						DialogDemo.builder(Login.this, "错误信息", "用户名或密码错误，请重新输入");
+					} else {
+						Toast.makeText(Login.this, "请注册后再登陆", Toast.LENGTH_SHORT)
+								.show();
+					}
 				}
+
 			}
 		});
 		register.setOnClickListener(new OnClickListener() {

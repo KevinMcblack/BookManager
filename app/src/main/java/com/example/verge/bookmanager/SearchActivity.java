@@ -58,7 +58,6 @@ public class SearchActivity extends AppCompatActivity {
         searchView.setIconifiedByDefault(true);
         searchView.setSubmitButtonEnabled(true);
         searchView.onActionViewExpanded();
-        searchView.setBackgroundColor(0x22ff00ff);
         searchView.setIconifiedByDefault(true);
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
